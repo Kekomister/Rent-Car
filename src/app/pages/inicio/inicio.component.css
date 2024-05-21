@@ -1,0 +1,39 @@
+#busqueda{
+    display: flex;
+    margin: 0 auto;
+    height: 30vh;
+    width: 70%;
+    align-items: center;
+}
+
+.formulario{
+    display: flex;
+}
+
+.ciudades{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.fechas{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.btn-buscar{
+    height: 15vh;
+}
+
+.ejemplos{
+    display: flex;
+    overflow: auto;
+    height: 65vh;
+}
+
+.cuadrado{
+    align-content: center;
+    width: 25%;
+    height: 100%;
+}

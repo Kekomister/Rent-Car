@@ -1,0 +1,48 @@
+<div class="btns-inicio" *ngIf="!crear && !cambiar">
+    <button (click)="crear = true"> Agregar Sucursal </button>
+    <br><br>
+    <button (click)="cambiar = true"> Ver listado de sucursales para administrar </button>
+</div>
+
+<div *ngIf="crear || cambiar">
+    <button class="btn-volver" (click)="goBack()"> Volver </button>
+</div>
+
+<div class="agregar" *ngIf="crear">
+
+    <label for=""> Ciudad donde esta o estara situada </label>
+    <input type="text" [(ngModel)]="tempSucursal.ciudad">
+    <br><br>
+
+    <label for=""> Quien es o sera el encargado de esa sucursal </label>
+    <select [(ngModel)]="tempSucursal.duenio">
+        <option *ngFor="let u of usuarios" [ngValue]="u.id_usuario">
+            {{u.nombre}}/{{u.apellido}}/{{u.dni}}/{{u.nombre_usuario}}
+        </option>
+    </select>
+    <br><br>
+    <label for=""> (Formato : nombre / apellido / dni / usuario que usa) </label>
+
+    <br><br>
+    <button class="btn-agregar-dentro" (click)="subirSucursal()"> Agregar </button>
+
+</div>
+
+<div class="cambiar" *ngIf="cambiar">
+
+    <app-table [filas]="sucursales" [columnas]="titulos" (accion)="acciones($event)"></app-table>
+
+</div>
+
+<div class="reemplazar" *ngIf="reemplazar">
+    <label for="">
+        Reemplazar por (Formato : nombre / apellido / dni / usuario que usa):
+        <select [(ngModel)]="nuevoDuenio">
+            <option *ngFor="let u of usuarios" [ngValue]="u">
+                {{u.nombre}}/{{u.apellido}}/{{u.dni}}/{{u.nombre_usuario}}
+            </option>
+        </select>
+    </label>
+
+    <button (click)="subirNuevoDuenio()"> Listo </button>
+</div>

@@ -1,0 +1,24 @@
+.login{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    label{
+        margin: 5px;
+    }
+
+    input{
+        margin: 5px;
+    }
+
+    button{
+        margin: 5px;
+        width: 50%;
+    }
+}
+
+.btn-x{
+    display: flex;
+    justify-content: flex-end;
+}

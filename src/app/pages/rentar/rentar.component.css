@@ -1,0 +1,37 @@
+.muestra{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+
+    label{
+        margin: 3px;
+    }
+}
+
+.btn-si{
+    width: 15%;
+}
+
+.recibo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 3px solid #FFD300;
+    z-index: 9;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+}
+
+.dentro-recibo{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.btns-dentro-recibo{
+    margin-top: 3px;
+}

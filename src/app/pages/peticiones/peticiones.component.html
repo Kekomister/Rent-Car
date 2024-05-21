@@ -1,0 +1,24 @@
+
+<app-table 
+[columnas]="titulos" 
+[filas]="peticiones"
+(accion)="accion($event)"></app-table>
+
+<div *ngIf="modificarFlag">
+    
+    <label for=""> Modificando peticion numero : {{temp_pet}}</label>
+    <label for=""> Sucursal donde queres devolver el vehiculo </label>
+    
+    <select [(ngModel)]="temp_sucursal">
+        <option value="{{suc.id_sucursal}}" *ngFor="let suc of sucursales"> {{suc.ciudad}} </option>
+    </select>
+
+    <button (click)="cambiarPeticion()"> Cambiar sucursal </button>
+
+</div>
+
+<div class="cuerpo" *ngIf="expandirFlag">
+    <div class="info_auto">
+        <app-carta [array]="[auto]"></app-carta>
+    </div>
+</div>

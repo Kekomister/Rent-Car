@@ -1,0 +1,18 @@
+.carta{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    align-items: center;
+}
+
+.imagen{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    img{
+        margin: auto;
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+    }
+}

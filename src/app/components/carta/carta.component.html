@@ -1,0 +1,22 @@
+<div class="carta" *ngFor="let elem of array.slice(0,cantidad), let i = index" (click)="seleccionado(elem)">
+
+    <div class="imagen">
+        <img src='data:image/png;base64, {{elem.imagen}}' alt="{{i}}">
+    </div>
+    
+    <br><br>
+    <label for="" *ngIf="elem.cantidad == undefined && elem.id_auto_sucursal != undefined">
+        ID : {{elem.id_auto_sucursal}}
+    </label>
+
+    <br><br>
+    <label for=""> Nombre : {{elem.nombre}} </label>
+    <br><br>
+    <label for=""> Marca : {{elem.marca}} </label>
+    <br><br>
+    <label for=""> Costo : {{elem.costo}} </label>
+    <br><br>
+    <div *ngIf="elem.cantidad > 0">
+        <label for=""> Cantidad en tu sucursal : {{elem.cantidad}} </label>
+    </div>
+</div>

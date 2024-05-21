@@ -1,0 +1,79 @@
+<div class="inicio" *ngIf="!agregarFlag && !moverFlag">
+
+    <button (click)="agregar()"> Agregar un auto </button>
+    <br><br>
+    <button (click)="mover()"> Mover auto a otra sucursal </button>
+
+    <br><br>
+    <label for=""> Autos en tu Sucursal </label>
+    <br><br>
+    <label for=""> Seleccione un auto para agregar una copia </label>
+    <br><br>
+
+    <div class="contenedor-cartas">
+        <app-carta [array]="autos_suc | autosReducido" (evtSelec)="tocadoAdentro($event)"></app-carta>
+    </div>
+
+</div>
+
+<div *ngIf="agregarFlag">
+
+    <button (click)="limpiar()"> Volver atras </button>
+    <br><br>
+    <button (click)="sacar_Hidden(false)" *ngIf="temp_Auto.id_auto == undefined" id="btn-vision">
+        Ver autos que ya estan en otras sucursales
+    </button>
+
+    <br><br>
+    <label for=""> Nombre </label>
+    <input id="admin-nombre" type="text" [(ngModel)]="temp_Auto.nombre" [readOnly]="true">
+    <br><br>
+    <label for=""> Marca </label>
+    <input type="text" id="admin-marca" [(ngModel)]="temp_Auto.marca" [readOnly]="true">
+    <br><br>
+    <label for=""> Costo </label>
+    <input type="number" [(ngModel)]="temp_Auto.costo">
+
+    <br><br>
+    <div>
+        <button (click)="subir()"> Subir imagen </button>
+        <input type="file" #fileUpload id="fileUpload" enctype="multipart/form-data" name="fileUpload"
+            multiple="multiple" accept="image/*" style="display:none;" />
+    </div>
+
+    <br><br>
+    <button (click)="crearTipoAuto()"> {{mensaje}} </button>
+    <br><br>
+
+
+    <div *ngIf="mostrarImagen">
+        <label for=""> Preview imagen </label>
+        <img src='data:image/png;base64, {{muestraImagen}}' alt="fallo">
+        <br><br>
+    </div>
+
+</div>
+
+<div *ngIf="moverFlag">
+
+    <button (click)="limpiar()"> Volver atras </button>
+    <br><br>
+
+    <div class="contenedor-cartas">
+        <app-carta [array]="autos_suc | resetAutos" (evtSelec)="seleccionadoMover($event)"></app-carta>
+    </div>
+
+    <select [(ngModel)]="temp_Suc">
+        <option [ngValue]="{id_sucursal : -1}"> Borrar </option>
+        <option *ngFor="let op of ciudades" [ngValue]="op">
+            {{op.ciudad}}
+        </option>
+    </select>
+    <button (click)="modificarAutoSuc()"> Mover vehiculo </button>
+
+</div>
+
+<div #vision id="vision-autos" hidden>
+    <button (click)="sacar_Hidden(true)"> X </button>
+    <app-carta [array]="autosGlobal" (evtSelec)="tocadoAfuera($event)"></app-carta>
+</div>

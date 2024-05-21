@@ -1,0 +1,48 @@
+<div id="busqueda" *ngIf="autos.length == 0">
+
+    <div class="formulario">
+
+        <div class="ciudades">
+            <label for=""> Ciudad de retiro </label>
+            <select [(ngModel)]="temp_peticion.sucursal_retiro">
+                <option *ngFor="let op of ciudades" [ngValue]="op.id_sucursal">
+                    {{op.ciudad}}
+                </option>
+            </select>
+    
+            <label for=""> Ciudad de devolucion </label>
+            <select [(ngModel)]="temp_peticion.sucursal_devolucion">
+                <option *ngFor="let op of ciudades" [ngValue]="op.id_sucursal">
+                    {{op.ciudad}}
+                </option>
+            </select>
+        </div>
+    
+        <div class="fechas">
+            <label for=""> Fecha de retiro </label>
+            <p-calendar [(ngModel)]="temp_peticion.fecha_retiro" [minDate]="minDate" [maxDate]="maxDate"
+                [readonlyInput]="true"></p-calendar>
+    
+            <label for=""> Fecha de devolucion </label>
+            <p-calendar [(ngModel)]="temp_peticion.fecha_devolucion" [minDate]="minDate" [maxDate]="maxDate"
+                [readonlyInput]="true"></p-calendar>
+        </div>
+    
+        <button class="btn-buscar" (click)="chequeoCampos()"> Buscar </button>
+
+    </div>
+
+</div>
+
+<div class="ejemplos" *ngIf="autos.length == 0">
+    <div class="cuadrado" *ngFor="let auto of autosMuestra.slice(0,6), let i = index">
+        <app-carta [array]="[auto]" [cantidad]="1"></app-carta>
+    </div>
+</div>
+
+<div id="lista-autos-disponibles" *ngIf="autos.length != 0">
+    
+    <label for=""> Se encontraron {{(autos | noRentados).length}} autos que coinciden con lo que buscas</label>
+    <app-carta [array]="autos | noRentados" (evtSelec)="tocado($event)"></app-carta>
+
+</div>

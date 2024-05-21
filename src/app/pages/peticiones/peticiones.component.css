@@ -1,0 +1,23 @@
+.cuerpo{
+    position: fixed;
+    z-index: 8;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+}
+
+.info_auto{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 3px solid #FFD300;
+    z-index: 9;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+    height: 50vh;
+    width: 50vh;
+}

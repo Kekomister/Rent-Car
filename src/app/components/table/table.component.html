@@ -1,0 +1,53 @@
+<div>
+
+    <p-table id="customers" 
+    [paginator]="true" [rows]="5" 
+    [showCurrentPageReport]="true" 
+    [columns]="columnas"
+    [value]="filas" 
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Viendo del registro {first} hasta el {last} de {totalRecords} registros">
+    
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{ col.header }}
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+
+                <ng-container 
+                *ngIf="col.header != 'Finalizado' &&
+                col.header != 'Fecha de retiro' && 
+                col.header != 'Fecha de devolucion'">
+                    {{ rowData[col.field]}}
+                </ng-container>
+                <ng-container *ngIf="col.header == 'Informacion del auto'">
+                    <button id="info_auto_btn" (click)="expandir(rowData)"> Ver info </button>
+                </ng-container>
+                <ng-container *ngIf="col.header == 'Finalizado'">
+                    {{ rowData[col.field] | boolean}}
+                </ng-container>
+                <ng-container *ngIf="col.header == 'Fecha de retiro' || col.header == 'Fecha de devolucion'">
+                    {{ rowData[col.field] | date:'dd-MM-yyyy'}}
+                </ng-container>
+
+            </td>
+            <td>
+                <i class='bx bxs-edit' (click)="modificar(rowData)"></i>
+                <i class='bx bxs-trash' (click)="borrar(rowData)"></i>
+            
+            </td>
+        </tr>
+    </ng-template>
+
+</p-table>
+
+</div>

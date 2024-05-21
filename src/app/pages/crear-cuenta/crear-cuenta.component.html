@@ -1,0 +1,31 @@
+<div id="creacion_U">
+
+    <label for=""> Nombre </label>
+    <input type="text" [(ngModel)]="temp_usuario.nombre">
+
+    <label for=""> Apellido </label>
+    <input type="text" [(ngModel)]="temp_usuario.apellido">
+
+    <label for=""> DNI </label>
+    <input type="number" [(ngModel)]="temp_usuario.dni">
+
+    <label for=""> Mail </label>
+    <input type="text" [(ngModel)]="temp_usuario.mail">
+
+    <label for=""> Usuario </label>
+    <input type="text" [(ngModel)]="temp_usuario.nombre_usuario">
+
+    <label for=""> Contraseña </label>
+    <input type="password" [(ngModel)]="temp_usuario.contrasenia">
+
+    <label for=""> Contraseña de nuevo </label>
+    <input type="password" [(ngModel)]="contraCopia">
+
+    <button (click)="chequeoCampos()"> Crear cuenta </button>
+</div>
+
+<div *ngIf="time != 0" class="loader-box">
+    <div class="loader">
+        
+    </div>
+</div>
