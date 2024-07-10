@@ -1,31 +1,44 @@
-<div id="creacion_U">
+<div class="todo">
 
-    <label for=""> Nombre </label>
-    <input type="text" [(ngModel)]="temp_usuario.nombre">
+    <div class="naranja" id="creacion_U">
 
-    <label for=""> Apellido </label>
-    <input type="text" [(ngModel)]="temp_usuario.apellido">
+        <div class="titulo">
+            <label for=""> Creacion de Usuario </label>
+        </div>
 
-    <label for=""> DNI </label>
-    <input type="number" [(ngModel)]="temp_usuario.dni">
+        <div class="datos">
 
-    <label for=""> Mail </label>
-    <input type="text" [(ngModel)]="temp_usuario.mail">
+            <label for=""> Nombre </label>
+            <input type="text" [(ngModel)]="temp_usuario.nombre">
 
-    <label for=""> Usuario </label>
-    <input type="text" [(ngModel)]="temp_usuario.nombre_usuario">
+            <label for=""> Apellido </label>
+            <input type="text" [(ngModel)]="temp_usuario.apellido">
 
-    <label for=""> Contraseña </label>
-    <input type="password" [(ngModel)]="temp_usuario.contrasenia">
+            <label for=""> DNI </label>
+            <input type="number" [(ngModel)]="temp_usuario.dni">
 
-    <label for=""> Contraseña de nuevo </label>
-    <input type="password" [(ngModel)]="contraCopia">
+            <label for=""> Mail </label>
+            <input type="text" [(ngModel)]="temp_usuario.mail">
 
-    <button (click)="chequeoCampos()"> Crear cuenta </button>
+            <label for=""> Usuario </label>
+            <input type="text" [(ngModel)]="temp_usuario.nombre_usuario">
+
+            <label for=""> Contraseña </label>
+            <input type="password" [(ngModel)]="temp_usuario.contrasenia">
+
+            <label for=""> Contraseña de nuevo </label>
+            <input type="password" [(ngModel)]="contraCopia">
+
+        </div>
+
+        <button class="azul btn-creacion" (click)="chequeoCampos()"> Crear cuenta </button>
+
+    </div>
+
 </div>
 
 <div *ngIf="time != 0" class="loader-box">
     <div class="loader">
-        
+
     </div>
 </div>

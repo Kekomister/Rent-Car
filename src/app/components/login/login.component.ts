@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { Usuario } from 'src/app/classes/usuario.model';
 import { ConexionService } from 'src/app/services/conexion.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -19,8 +19,19 @@ export class LoginComponent {
   constructor(
     private login: LoginService,
     private conexion: ConexionService,
-    private alert: MessagesService
-  ) { }
+    private alert: MessagesService,
+    private renderer: Renderer2
+  ) { 
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (
+        e.target == document.getElementById('fondo-login')
+      ) {
+        //console.log("FUERA DE LOGIN");
+        this.login.logeando = false;
+        this.salir();
+      }
+    });
+  }
 
   public chequeoEntrar() {
     let uFlag = false;
@@ -64,6 +75,7 @@ export class LoginComponent {
     if (this.login.chequeoMasterAdmin(this.usuario, this.contrasenia)) {
       this.alert.mensajeBien("Bienvenido Duenio!");
       this.irA('Crear-cambiar-sucursal');
+      this.login.usuario.nombre_usuario = "M";
       this.login.logeando = false;
     }
     else {
@@ -103,6 +115,7 @@ export class LoginComponent {
       let scsal = this.conexion.lista_Sucursales[i];
       if (scsal.duenio == user.id_usuario) {
         esta = scsal.id_sucursal;
+        this.login.sucursal = scsal.ciudad;
       }
     }
     return esta;

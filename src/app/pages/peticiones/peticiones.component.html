@@ -1,24 +1,44 @@
+<div class="fondo ancho">
 
-<app-table 
-[columnas]="titulos" 
-[filas]="peticiones"
-(accion)="accion($event)"></app-table>
-
-<div *ngIf="modificarFlag">
-    
-    <label for=""> Modificando peticion numero : {{temp_pet}}</label>
-    <label for=""> Sucursal donde queres devolver el vehiculo </label>
-    
-    <select [(ngModel)]="temp_sucursal">
-        <option value="{{suc.id_sucursal}}" *ngFor="let suc of sucursales"> {{suc.ciudad}} </option>
-    </select>
-
-    <button (click)="cambiarPeticion()"> Cambiar sucursal </button>
-
-</div>
-
-<div class="cuerpo" *ngIf="expandirFlag">
-    <div class="info_auto">
-        <app-carta [array]="[auto]"></app-carta>
+    <div class="contenedor-tabla">
+        <app-table 
+        [columnas]="titulos" 
+        [filas]="peticiones" 
+        (accion)="accion($event)">
+        </app-table>
     </div>
+    
+    <div class="mod-fondo" *ngIf="modificarFlag">
+
+        <div class="modificando naranja">
+
+            <div class="mod-titulo">
+                <label for=""> Modificando peticion numero : {{temp_pet}}</label>
+            </div>
+    
+            <div>
+                <label for=""> Sucursal / Ciudad donde queres devolver el vehiculo </label>
+        
+                <select class="mod-select" [(ngModel)]="temp_sucursal">
+                    <option value="{{suc.id_sucursal}}" *ngFor="let suc of sucursales"> {{suc.ciudad}} </option>
+                </select>
+            </div>
+        
+            <div class="mod-cont-btn">
+                <button class="mod-btn azul" (click)="cancelar()"> Cancelar </button>
+                <button class="mod-btn azul" (click)="cambiarPeticion()"> Cambiar sucursal </button>
+            </div>
+        
+        </div>
+    
+    </div>
+    
+    <div class="cuerpo" *ngIf="expandirFlag">
+        <div class="info-auto">
+            <div class="info-auto-blanco"></div>
+            <app-carta [array]="[auto]"></app-carta>
+            
+        </div>
+    </div>
+
 </div>

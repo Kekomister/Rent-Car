@@ -1,12 +1,11 @@
 <div>
 
-    <p-table id="customers" 
-    [paginator]="true" [rows]="5" 
-    [showCurrentPageReport]="true" 
+    <p-table
+    id="customers" 
+    [paginator]="true" [rows]="10"
     [columns]="columnas"
-    [value]="filas" 
-    [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Viendo del registro {first} hasta el {last} de {totalRecords} registros">
+    [value]="filas"
+    [tableStyle]="{ 'min-width': '50rem' }">
     
     <ng-template pTemplate="header" let-columns>
         <tr>
@@ -42,8 +41,7 @@
             </td>
             <td>
                 <i class='bx bxs-edit' (click)="modificar(rowData)"></i>
-                <i class='bx bxs-trash' (click)="borrar(rowData)"></i>
-            
+                <i class='bx bxs-trash' (click)="borrar(rowData)"></i>       
             </td>
         </tr>
     </ng-template>

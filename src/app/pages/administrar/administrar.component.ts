@@ -35,7 +35,7 @@ export class AdministrarComponent {
   mensaje: string = "Crear Auto";
 
   constructor(
-    private login: LoginService,
+    public login: LoginService,
     private conexion: ConexionService,
     private router: Router,
     private renderer: Renderer2,
@@ -88,6 +88,7 @@ export class AdministrarComponent {
 
     this.mensaje = "Agregar copia"
     this.muestraImagen = this.temp_Auto.imagen;
+
   }
 
   public subir() {
@@ -108,7 +109,7 @@ export class AdministrarComponent {
     this.fileUpload.nativeElement.value = '';
     //console.log(this.files[0].data);
 
-    this.sendFile(this.files[0]);
+    this.sendFile(this.files[this.files.length - 1]);
   }
 
   public async sendFile(file: any) {
@@ -129,9 +130,9 @@ export class AdministrarComponent {
   }
 
   public crearTipoAuto() {
-    let msjPregunta = 
+    let msjPregunta =
       "Datos del auto <br> Nombre del auto: " + this.temp_Auto.nombre +
-      "<br> Marca del auto: " + this.temp_Auto.marca + 
+      "<br> Marca del auto: " + this.temp_Auto.marca +
       "<br> Costo del auto: " + this.temp_Auto.costo;
     if (this.temp_Auto.id_auto != undefined) {
       let msg = this.chequeoVaciosAgreg(false);
@@ -160,7 +161,7 @@ export class AdministrarComponent {
                 }
               })
 
-            }else{
+            } else {
               this.alert.cancelado();
             }
           });
@@ -240,6 +241,19 @@ export class AdministrarComponent {
 
   public seleccionadoMover(event: any) {
     this.temp_Auto_Suc = event;
+
+    let doc = document.getElementsByClassName("carta");
+    let encontrado = false;
+    for (let i = 0; i < doc.length; i++) {
+      let carta = doc.item(i) as HTMLElement;
+      encontrado = carta.innerText.includes("ID : " + event.id_auto_sucursal);
+
+      if (encontrado) {
+        carta.style.border = "5px double red";
+      } else {
+        carta.style.border = "5px double black";
+      }
+    }
   }
 
   public modificarAutoSuc() {
@@ -249,8 +263,8 @@ export class AdministrarComponent {
     let msg = "";
     if (this.temp_Auto_Suc.id_auto_sucursal == undefined) {
       msg = "Seleccione un auto por favor.";
-    }else{
-      if(this.temp_Suc.id_sucursal == undefined){
+    } else {
+      if (this.temp_Suc.id_sucursal == undefined) {
         msg = "Seleccione la sucursal a la que quiere moverlo.";
       }
     }
@@ -259,32 +273,32 @@ export class AdministrarComponent {
 
       if (this.temp_Suc.id_sucursal == -1) {
         this.alert.pregunta("Seguro de querer borrar el auto?", mensajes[0])
-        .then(res => {
-          if(res.isConfirmed){
-            this.conexion.auto_suc
-            .eliminarAuto_Sucursal(this.temp_Auto_Suc.id_auto_sucursal)
-            .subscribe(res => {
-              this.alert.borrado();
-              this.llenarArrays();
-            })
-          }else{
-            this.alert.cancelado();
-          }
-        })
+          .then(res => {
+            if (res.isConfirmed) {
+              this.conexion.auto_suc
+                .eliminarAuto_Sucursal(this.temp_Auto_Suc.id_auto_sucursal)
+                .subscribe(res => {
+                  this.alert.borrado();
+                  this.llenarArrays();
+                })
+            } else {
+              this.alert.cancelado();
+            }
+          })
       } else {
         this.alert.pregunta("Seguro de querer moverlo?", mensajes[1])
-        .then(res => {
-          if(res.isConfirmed){
-            this.conexion.auto_suc
-            .modificarAuto_Sucursal(this.temp_Auto_Suc.id_auto_sucursal, this.temp_Suc.id_sucursal)
-            .subscribe(res => {
-              this.alert.mensajeBien("Movido correctamente!");
-              this.llenarArrays();
-            })
-          }else{
-            this.alert.cancelado();
-          }
-        })
+          .then(res => {
+            if (res.isConfirmed) {
+              this.conexion.auto_suc
+                .modificarAuto_Sucursal(this.temp_Auto_Suc.id_auto_sucursal, this.temp_Suc.id_sucursal)
+                .subscribe(res => {
+                  this.alert.mensajeBien("Movido correctamente!");
+                  this.llenarArrays();
+                })
+            } else {
+              this.alert.cancelado();
+            }
+          })
       }
 
     } else {
@@ -295,27 +309,16 @@ export class AdministrarComponent {
 
   private chequeoVaciosAgreg(chequeoImagen: boolean) {
     let msg = "";
-    let nomFlag = this.vacio(this.temp_Auto.nombre, " nombre");
-    let marcaFlag = this.vacio(this.temp_Auto.marca, "a marca");
-    let costoFlag = this.vacio(String(this.temp_Auto.costo), " costo");
-    let imgFlag = "";
+    msg += this.vacio(this.temp_Auto.nombre, " nombre");
+    msg += this.vacio(this.temp_Auto.marca, "a marca");
+    msg += this.vacio(String(this.temp_Auto.costo), " costo");
+
     if (chequeoImagen) {
       if (this.files.length < 1) {
-        imgFlag = "No hay una imagen agregada"
+        msg += "No hay una imagen agregada"
       }
     }
 
-    if (
-      nomFlag != "" ||
-      marcaFlag != "" ||
-      costoFlag != "" ||
-      imgFlag != ""
-    ) {
-      msg = nomFlag + "<br>" +
-        marcaFlag + "<br>" +
-        costoFlag + "<br>" +
-        imgFlag + "<br>";
-    }
     return msg;
   }
 
@@ -328,7 +331,7 @@ export class AdministrarComponent {
       campo == "undefined" ||
       campo == "null"
     ) {
-      msj = "Necesita ingresar un" + extra;
+      msj = "Necesita ingresar un" + extra +"<br>";
     }
     return msj;
   }
@@ -393,19 +396,19 @@ export class AdministrarComponent {
     }, 500)
   }
 
-  private crearMsjsModificar() : string[]{
-    let datosAuto = 
-    "Datos del auto" + "<br> ID del auto: " + this.temp_Auto_Suc.id_auto_sucursal + 
-    "<br> Nombre del auto: " + this.temp_Auto_Suc.nombre +
-    "<br> Marca del auto: " + this.temp_Auto_Suc.marca + 
-    "<br> Costo del auto: " + this.temp_Auto_Suc.costo;
+  private crearMsjsModificar(): string[] {
+    let datosAuto =
+      "Datos del auto" + "<br> ID del auto: " + this.temp_Auto_Suc.id_auto_sucursal +
+      "<br> Nombre del auto: " + this.temp_Auto_Suc.nombre +
+      "<br> Marca del auto: " + this.temp_Auto_Suc.marca +
+      "<br> Costo del auto: " + this.temp_Auto_Suc.costo;
 
     let tempNom = this.conexion.lista_Sucursales.find((city) => city.id_sucursal == this.temp_Auto_Suc.id_sucursal_actual);
-    let deDondeADonde = 
+    let deDondeADonde =
       `Sucursal actual: ` + tempNom?.ciudad +
       `<br> Sucursal destino: ` + this.temp_Suc.ciudad;
 
-    return [datosAuto,deDondeADonde];
+    return [datosAuto, deDondeADonde];
   }
 
 }

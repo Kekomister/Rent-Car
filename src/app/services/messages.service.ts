@@ -12,6 +12,7 @@ export class MessagesService {
     Swal.fire({
       title : titulo,
       icon : 'success',
+      color: "black",
       showConfirmButton: false,
       timer: 1500
     });
@@ -21,6 +22,7 @@ export class MessagesService {
     Swal.fire({
       title : titulo,
       icon : 'info',
+      color: "black",
       showConfirmButton: false,
       timer: 1500
     });
@@ -30,6 +32,7 @@ export class MessagesService {
     Swal.fire({
       title : "Cancelado",
       icon : 'info',
+      color: "black",
       showConfirmButton: false,
       timer: 1500
     });
@@ -39,6 +42,7 @@ export class MessagesService {
     Swal.fire({
       title : "Borrado correctamente!",
       icon : 'success',
+      color: "black",
       showConfirmButton: false,
       timer: 1500
     });
@@ -49,6 +53,7 @@ export class MessagesService {
       title : titulo,
       html : texto,
       icon : "success",
+      color: "black",
       showConfirmButton: false,
       timer: 1500
     });
@@ -58,7 +63,9 @@ export class MessagesService {
     Swal.fire({
       title : "ERROR",
       html : texto,
-      icon : "error"
+      icon : "error",
+      color: "black",
+      
     });
   }
 
@@ -71,6 +78,7 @@ export class MessagesService {
       confirmButtonText: "Ok",
       cancelButtonText: "No",
       icon : "question",
+      color: "black"
     });
   }
 }

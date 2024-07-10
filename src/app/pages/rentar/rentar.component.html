@@ -1,32 +1,10 @@
-<div class="muestra">
-    <app-carta [array]="auto_selec"></app-carta>
+<div class="ancho">
+    <div class="muestra">
 
-    <label for="">
-        Ciudad de retiro : {{buscarSucursal(temp_peticion.sucursal_retiro)}}
-    </label>
+        <app-carta class="img" [array]="auto_selec"></app-carta>
 
-    <label for="">
-        Ciudad de devolucion : {{buscarSucursal(temp_peticion.sucursal_devolucion)}}
-    </label>
+        <div class="separados">
 
-    <label for="">
-        Formato : Año-Mes-dia
-    </label>
-
-    <label for="">
-        Fecha de retiro : {{temp_peticion.fecha_retiro}}
-    </label>
-
-    <label for="">
-        Fecha de devolucion : {{temp_peticion.fecha_devolucion}}
-    </label>
-
-    <label for=""> Los datos estan bien? </label>
-    <button class="btn-si" (click)="subirPeticion()"> Si </button>
-
-    <div class="recibo" *ngIf="recibo">
-
-        <div class="dentro-recibo">
             <label for="">
                 Ciudad de retiro : {{buscarSucursal(temp_peticion.sucursal_retiro)}}
             </label>
@@ -35,8 +13,12 @@
                 Ciudad de devolucion : {{buscarSucursal(temp_peticion.sucursal_devolucion)}}
             </label>
 
+        </div>
+
+        <div class="separados">
+
             <label for="">
-                Formato : Año-Mes-dia
+                (Formato : Año-Mes-dia)
             </label>
 
             <label for="">
@@ -47,20 +29,63 @@
                 Fecha de devolucion : {{temp_peticion.fecha_devolucion}}
             </label>
 
-            <label for="">
-                Precio : {{temp_peticion.precio}}
-            </label>
+        </div>
 
-            <label for="">
-                (Lo va a necesitar para retirar el vehiculo)
-                <br>
-                Codigo de retiro : {{temp_peticion.codigo_retiro}}
-            </label>
+        <div>
+            <label for=""> Precio total : {{total}}</label>
+        </div>
 
-            <div class="btns-dentro-recibo">
-                <button (click)="irA('')"> Listo </button>
+        <label for=""> Los datos estan bien? </label>
+        <button class="btn-si azul" (click)="subirPeticion()"> Si </button>
+
+
+
+        <div class="recibo naranja" *ngIf="recibo">
+
+            <div class="ticket">
+                <label for=""> TICKET </label>
             </div>
+
+            <div class="dentro-recibo">
+
+                <label for="">
+                    Ciudad de retiro : {{buscarSucursal(temp_peticion.sucursal_retiro)}}
+                </label>
+
+                <label for="">
+                    Ciudad de devolucion : {{buscarSucursal(temp_peticion.sucursal_devolucion)}}
+                </label>
+
+                <label for="">
+                    Fecha de retiro : {{temp_peticion.fecha_retiro}}
+                </label>
+
+                <label for="">
+                    Fecha de devolucion : {{temp_peticion.fecha_devolucion}}
+                </label>
+
+                <label for="">
+                    Precio : {{total}}
+                </label>
+
+                <div class="codigo">
+                    <label for="">
+                        Codigo de retiro : 
+                        <br>
+                        {{temp_peticion.codigo_retiro}}
+                        <br>
+                        (Lo va a necesitar para retirar el vehiculo)
+                    </label>
+                </div>
+
+                <div class="btns-dentro-recibo">
+                    <button class="btn-listo azul" (click)="irA('')"> Listo </button>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
+
 </div>

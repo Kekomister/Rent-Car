@@ -1,3 +1,20 @@
+.fondo-config{
+    background-image: url("../../../assets/configuro-fondo.png");
+    background-size: contain;
+}
+
+.ancho{
+    height: 89vh;
+    background-color: white;
+    padding: 1rem;
+}
+
+.azul{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
 .btns-inicio{
     margin: 0 auto;
     display: flex;
@@ -11,21 +28,136 @@
 
 .btn-volver{
     margin: 0 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.2rem 1rem;
 }
+
+/*-------------------------AGREGAR--------------------*/
 
 .agregar{
     margin: 0 auto;
-    width: 70%;
+    width: 90%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+}
+
+.agregar-ciudad{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    input{
+        padding: 5px;
+        border-radius: 3px;
+    }
+}
+
+.agregar-encargado{
+    margin-top: 1vh;
+    display: grid;
+    grid-template-columns: 30% 30% 40%;
+    select{
+        height: 3vh;
+        border-radius: 3px;
+    }
+}
+
+.agregar-encargado-ej{
+    margin-left: 3vw;
 }
 
 .btn-agregar-dentro{
     display: flex;
     margin: 0 auto;
+    margin-top: 2vh;
     width: 20%;
     justify-content: center;
 }
 
+/*-------------------------CAMBIAR--------------------*/
+
 .cambiar{
     width: 80%;
-    margin: 0 auto;
+    margin: 3vh auto;
+}
+
+/*-------------------------REEMPLAZAR-----------------*/
+
+.reemplazar{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 5px double black;
+    text-align: center;
+    height: 20vh;
+
+    label{
+        margin-top: 1vh;
+        font-size: larger;
+    }
+
+}
+
+.custom-select{
+    margin-top: 1vh;
+    width: 80%;
+    align-self: center;
+    position: relative;
+
+    select {
+        appearance: none;
+        /* safari */
+        -webkit-appearance: none;
+        /* other styles for aesthetics */
+        width: 100%;
+        font-size: 1.15rem;
+        padding: 5px;
+        background-color: #fff;
+        border: 1px solid #caced1;
+        border-radius: 0.25rem;
+        color: #000;
+        cursor: pointer;
+      }
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
+.reemplazar-cont-btns{
+    width: 30%;
+    align-self: center;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: space-around;
 }

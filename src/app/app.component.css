@@ -1,3 +1,14 @@
+.fondo{
+    background-image: url("../assets/fondo-normal.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.router{
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+}
+
 .espera{
     position: fixed;
     width: 100%;

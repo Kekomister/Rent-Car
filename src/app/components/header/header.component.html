@@ -1,31 +1,47 @@
-<div class="header">
-    <div>
-        <label for=""> RDW </label>
-    </div>
-    <button id="btn_home" (click)="irA('')"> Home </button>
-    
-    <div>
-        <button *ngIf="login.duenio != -1" (click)="irA('Administrar')"> Administrar </button>
-        <button *ngIf="login.usuario.id_usuario == -1" (click)="irA('Crear-cambiar-sucursal')"> Sucursales </button>    
-    </div>
+<div class="header naranja">
 
-    <div id="log-in" *ngIf="login.usuario.id_usuario == undefined">
-        
-        <button id="btn-ingresar" (click)="sacar_Hidden(false)"> INGRESAR </button>
+    <div class="ancho">
 
-        <div id="ingresar" hidden>
-            <app-login (evtIr)="irA($event)" (evtSalir)="sacar_Hidden(true)"></app-login>
+        <div class="titulo">
+            <label for=""> Rent, Don't Waste! </label>
         </div>
-    </div>
 
-    <div *ngIf="login.usuario.id_usuario != undefined" >
-        <button (click)="irA('Peticiones')">
-            Peticiones hechas
-        </button>
+        <div class="btns">
 
-        <button (click)="salir()">
-            Log out
-        </button>
+            <button class="azul" id="btn_home" (click)="irA('')"> Home </button>
+
+            <div>
+                <button class="azul" *ngIf="login.duenio != -1" (click)="irA('Administrar')"> Administrar </button>
+                <button class="azul" *ngIf="login.usuario.id_usuario == -1" (click)="irA('Crear-cambiar-sucursal')">
+                    Sucursales </button>
+            </div>
+
+            <div id="log-in" *ngIf="login.usuario.id_usuario == undefined">
+
+                <button class="azul" id="btn-ingresar" (click)="sacar_Hidden(false)"> INGRESAR </button>
+
+                <div id="ingresar" hidden>
+                    <app-login (evtIr)="irA($event)" (evtSalir)="sacar_Hidden(true)"></app-login>
+                </div>
+            </div>
+
+            <div *ngIf="login.usuario.id_usuario != undefined">
+                <button class="azul" (click)="irA('Peticiones')">
+                    Peticiones hechas
+                </button>
+
+                <button class="azul" (click)="salir()">
+                    Log out
+                </button>
+
+                <label class="msj-bienvenida" for="">
+                    Usuario : {{login.usuario.nombre_usuario}}
+                </label>
+
+            </div>
+
+        </div>
+
     </div>
 
 </div>

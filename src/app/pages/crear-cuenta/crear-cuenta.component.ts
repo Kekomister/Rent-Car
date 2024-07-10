@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Mail } from 'src/app/classes/mail.model';
 import { Usuario } from 'src/app/classes/usuario.model';
 import { ConexionService } from 'src/app/services/conexion.service';
@@ -13,12 +14,13 @@ export class CrearCuentaComponent {
 
   temp_usuario: Usuario = new Usuario;
   contraCopia: string = "";
-  mailError : boolean = false;
-  time : number = 0;
+  mailError: boolean = false;
+  time: number = 0;
 
   constructor(
     private conexion: ConexionService,
-    private alert: MessagesService
+    private alert: MessagesService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,42 +33,10 @@ export class CrearCuentaComponent {
     let apeFlag = this.chequeoStringNum(this.temp_usuario.apellido, "apellido");
     let dniFlag = this.chequeoDni(this.temp_usuario.dni);
     let userFlag = this.chequeoUsuario("usuario");
-    let contraFlag = this.chequeoContra("contra");
+    let contraFlag = this.chequeoContra("contraseña");
     let mailFlag = this.chequeoMail("mail");
 
-    if(mailFlag == ""){
-      this.envioMail();
-      this.time = 4000;
-    }
-
-    setTimeout(() => {
-      this.time = 0;
-      if (this.mailError) {
-        mailFlag = "El mail ingresado no es correcto o hubo un problema";
-      }
-
-      if (
-        nomFlag != "" ||
-        apeFlag != "" ||
-        dniFlag != "" ||
-        mailFlag != "" ||
-        userFlag != "" ||
-        contraFlag != ""
-      ) {
-        let msj = nomFlag + "<br>" +
-          apeFlag + "<br>" +
-          dniFlag + "<br>" +
-          mailFlag + "<br>" +
-          userFlag + "<br>" +
-          contraFlag + "<br>";
-  
-        this.alert.error(msj);
-      }else{
-        this.crear_Cuenta();
-        this.alert.mensajeDetallado("Creado correctamente","Le enviamos un mail");
-      }
-
-    },this.time);
+    this.chequeoFlags([nomFlag, apeFlag, dniFlag, mailFlag, userFlag, contraFlag]);
   }
 
   private chequeoVacio(campo: any, extra: string) {
@@ -95,14 +65,14 @@ export class CrearCuentaComponent {
 
   private chequeoDni(campo: number) {
     let msj = "";
-    if(campo == undefined){
+    if (campo == undefined) {
       msj = "El campo dni esta vacio"
     }
-    if(msj == ""){
+    if (msj == "") {
       let dni = this.conexion.lista_Usuarios.find(
         (user) => user.dni == campo
       );
-      if(dni != undefined){
+      if (dni != undefined) {
         msj = "Ese dni ya esta agregado a la base de datos"
       }
     }
@@ -116,11 +86,11 @@ export class CrearCuentaComponent {
     if (msj == "") {
       if (campo.length < 4) {
         msj = "El campo " + extra + " es muy corto. 4 caracteres minimo"
-      }else{
+      } else {
         let user = this.conexion.lista_Usuarios.find(
           (user) => user.nombre_usuario == campo
         );
-        if(user != undefined){
+        if (user != undefined) {
           msj = "Ese nombre de usuario ya existe"
         }
       }
@@ -159,16 +129,49 @@ export class CrearCuentaComponent {
     if (msj == "") {
       if (!campo.includes("@")) {
         msj = "El campo mail es invalido."
-      }else{
+      } else {
         let mail = this.conexion.lista_Usuarios.find(
           (user) => user.mail == campo
         );
-        if(mail != undefined){
+        if (mail != undefined) {
           msj = "Ese mail ya esta registrado"
         }
       }
     }
     return msj;
+  }
+
+  private chequeoFlags(array : string[]) {
+    let msj = "";
+    for(let i = 0; i < array.length; i++){
+      msj += this.texto(array[i]);
+    }
+
+    if(msj == ""){
+      this.envioMail();
+      this.time = 4000;
+      setTimeout(() => {
+        this.time = 0;
+        if (this.mailError) {
+          msj = "El mail ingresado no es correcto o hubo un problema";
+          this.alert.error(msj);
+        }else{
+          this.crear_Cuenta();
+          this.alert.mensajeDetallado("Creado correctamente", "Le enviamos un mail");
+          this.router.navigate(['']);
+        }
+      }, this.time);
+    }else{
+      this.alert.error(msj);
+    }
+  }
+
+  private texto(flag : string){
+    if(flag != ""){
+      return "<label>"+ flag + "</label>"
+    }else{
+      return "";
+    }
   }
 
   private is_numeric(str: string) {

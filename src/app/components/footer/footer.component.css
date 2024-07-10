@@ -1,0 +1,19 @@
+.footer{
+    height: 6vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid black;
+}
+
+.ancho{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+}
+
+label{
+    font-size: x-large;
+    color: rgb(29, 28, 28);
+}

@@ -6,5 +6,30 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ancho {
+    width: 80vw;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.naranja{
+    background-color: #E05338;
+}
+
+.azul{
+    background-color: #386FE0;
+    color: white;
+    cursor: pointer;
+}
+
+.swal2-html-container{
+    justify-self: center;
+
+    label{
+        display: flex;
+        padding: 0.1rem;
+    }
 }

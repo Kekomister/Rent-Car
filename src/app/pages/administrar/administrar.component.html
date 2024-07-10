@@ -1,79 +1,100 @@
-<div class="inicio" *ngIf="!agregarFlag && !moverFlag">
+<div class="fondo-config">
 
-    <button (click)="agregar()"> Agregar un auto </button>
-    <br><br>
-    <button (click)="mover()"> Mover auto a otra sucursal </button>
+    <div class="ancho">
 
-    <br><br>
-    <label for=""> Autos en tu Sucursal </label>
-    <br><br>
-    <label for=""> Seleccione un auto para agregar una copia </label>
-    <br><br>
+        <div class="inicio" *ngIf="!agregarFlag && !moverFlag">
 
-    <div class="contenedor-cartas">
-        <app-carta [array]="autos_suc | autosReducido" (evtSelec)="tocadoAdentro($event)"></app-carta>
+            <button class="azul" (click)="agregar()"> Agregar un auto </button>
+            <br><br>
+            <button class="azul" (click)="mover()"> Mover auto a otra sucursal </button>
+
+            <br><br>
+            <label for="" class="titulo"> Autos en tu Sucursal ({{login.sucursal}}) </label>
+            <br><br>
+            <label for="" class="texto"> Seleccione un auto para agregar una copia </label>
+            <br><br>
+
+            <div class="contenedor-cartas">
+                <app-carta [array]="autos_suc | autosReducido" (evtSelec)="tocadoAdentro($event)"></app-carta>
+            </div>
+
+        </div>
+
+        <div class="agregar" *ngIf="agregarFlag">
+
+            <button class="volver azul" (click)="limpiar()"> Volver atras </button>
+
+            <button class="ver-agregar azul" (click)="sacar_Hidden(false)" *ngIf="temp_Auto.id_auto == undefined" id="btn-vision">
+                Ver autos que ya estan en otras sucursales
+            </button>
+
+            <div class="info-agregar">
+
+                <div class="datos">
+
+                    <label for=""> Nombre </label>
+                    <input id="admin-nombre" type="text" [(ngModel)]="temp_Auto.nombre" [readOnly]="true">
+
+                    <label for=""> Marca </label>
+                    <input type="text" id="admin-marca" [(ngModel)]="temp_Auto.marca" [readOnly]="true">
+
+                    <label for=""> Costo </label>
+                    <input type="number" [(ngModel)]="temp_Auto.costo">
+
+                    <button class="azul" (click)="subir()"> Subir imagen </button>
+                    <!-- <label for=""> (No mayor a 360px de altura)</label> -->
+
+                </div>
+
+                <div>
+                    <input type="file" #fileUpload id="fileUpload" enctype="multipart/form-data" name="fileUpload"
+                        multiple="multiple" accept="image/*" style="display:none;" />
+                </div>
+
+                <div class="contenedor-imagen" *ngIf="mostrarImagen">
+                    <label for=""> Imagen seleccionada </label>
+                    <img class="imagen" src='data:image/png;base64, {{muestraImagen}}' alt="fallo">
+                </div>
+
+            </div>
+
+            <button class="crear azul" (click)="crearTipoAuto()"> {{mensaje}} </button>
+
+        </div>
+
+        <div class="mover" *ngIf="moverFlag">
+
+            <button class="azul" (click)="limpiar()"> Volver atras </button>
+            <br><br>
+
+            <div class="contenedor-cartas-mover">
+                <app-carta [array]="autos_suc | resetAutos" (evtSelec)="seleccionadoMover($event)"></app-carta>
+            </div>
+
+            <div class="ciudad-mover">
+                <div style="display: flex; flex-direction: column;">
+                
+                    <label for=""> Sucursal donde se va a mover </label>
+
+                    <select [(ngModel)]="temp_Suc">
+                        <option [ngValue]="{id_sucursal : -1}"> Borrar </option>
+                        <option *ngFor="let op of ciudades" [ngValue]="op">
+                            {{op.ciudad}}
+                        </option>
+                    </select>
+
+                </div>
+
+                <button class="azul" (click)="modificarAutoSuc()"> Mover vehiculo </button>
+            </div>
+
+        </div>
+
+        <div #vision id="vision-autos" hidden>
+            <button class="azul" (click)="sacar_Hidden(true)"> X </button>
+            <app-carta [array]="autosGlobal" (evtSelec)="tocadoAfuera($event)"></app-carta>
+        </div>
+
     </div>
 
-</div>
-
-<div *ngIf="agregarFlag">
-
-    <button (click)="limpiar()"> Volver atras </button>
-    <br><br>
-    <button (click)="sacar_Hidden(false)" *ngIf="temp_Auto.id_auto == undefined" id="btn-vision">
-        Ver autos que ya estan en otras sucursales
-    </button>
-
-    <br><br>
-    <label for=""> Nombre </label>
-    <input id="admin-nombre" type="text" [(ngModel)]="temp_Auto.nombre" [readOnly]="true">
-    <br><br>
-    <label for=""> Marca </label>
-    <input type="text" id="admin-marca" [(ngModel)]="temp_Auto.marca" [readOnly]="true">
-    <br><br>
-    <label for=""> Costo </label>
-    <input type="number" [(ngModel)]="temp_Auto.costo">
-
-    <br><br>
-    <div>
-        <button (click)="subir()"> Subir imagen </button>
-        <input type="file" #fileUpload id="fileUpload" enctype="multipart/form-data" name="fileUpload"
-            multiple="multiple" accept="image/*" style="display:none;" />
-    </div>
-
-    <br><br>
-    <button (click)="crearTipoAuto()"> {{mensaje}} </button>
-    <br><br>
-
-
-    <div *ngIf="mostrarImagen">
-        <label for=""> Preview imagen </label>
-        <img src='data:image/png;base64, {{muestraImagen}}' alt="fallo">
-        <br><br>
-    </div>
-
-</div>
-
-<div *ngIf="moverFlag">
-
-    <button (click)="limpiar()"> Volver atras </button>
-    <br><br>
-
-    <div class="contenedor-cartas">
-        <app-carta [array]="autos_suc | resetAutos" (evtSelec)="seleccionadoMover($event)"></app-carta>
-    </div>
-
-    <select [(ngModel)]="temp_Suc">
-        <option [ngValue]="{id_sucursal : -1}"> Borrar </option>
-        <option *ngFor="let op of ciudades" [ngValue]="op">
-            {{op.ciudad}}
-        </option>
-    </select>
-    <button (click)="modificarAutoSuc()"> Mover vehiculo </button>
-
-</div>
-
-<div #vision id="vision-autos" hidden>
-    <button (click)="sacar_Hidden(true)"> X </button>
-    <app-carta [array]="autosGlobal" (evtSelec)="tocadoAfuera($event)"></app-carta>
 </div>

@@ -1,6 +1,111 @@
-.inicio{
-    width: 90%;
+.fondo-config{
+    background-image: url("../../../assets/configuro-fondo.png");
+    background-size: contain;
+}
+
+/*-----------------INICIO------------------------------------------------*/
+
+.inicio,
+.agregar,
+.mover{
     margin: 0 auto;
+    padding: 1rem;
+    height: 89vh;
+    background-color: rgba(255, 255, 255, 0.877);
+    display: flex;
+    flex-direction: column;
+
+    button{
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        width: 20%;
+    }
+}
+
+.titulo{
+    font-size: xx-large;
+    align-self: center;
+}
+
+.texto{
+    align-self: center;
+}
+
+.contenedor-cartas{
+    height: 70vh;
+    overflow:scroll;
+    overflow-x: hidden;
+}
+
+/*-----------------AGREGAR------------------------------------------------*/
+
+.agregar{
+
+    .ver-agregar{
+        align-self: center;
+    }
+
+    .crear{
+        align-self: center;
+        margin: 2rem;
+    }
+}
+
+.info-agregar{
+    display: flex;
+    margin-top: 2rem;
+    width: 100%;
+    height: 90%;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.datos{
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 40%;
+
+    label{
+        padding: 0.2rem;
+        align-self: center;
+        font-size: large;
+    }
+
+    input{
+        padding: 0.1rem 1rem;
+        margin-bottom: 1rem;
+        border-radius: 3px;
+        align-self: center;
+    }
+
+    button{
+        width: 10vw;
+        align-self: center;
+    }
+}
+
+.contenedor-imagen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+
+    label{
+        font-size: x-large;
+        text-decoration: underline;
+        padding-bottom: 1rem;
+    }
+}
+
+.imagen{
+    background-color: rgba(0, 0, 0, 0.63);
+    max-height: 700px;
+    min-height: 30px;
+    max-width: 700px;
+    min-width: 30px;
 }
 
 #vision-autos{
@@ -17,4 +122,38 @@
     border: 1px solid green;
     height: 70vh;
     overflow: scroll;
+
+    button{
+        border: none;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+}
+
+/*-----------------MOVER------------------------------------------------*/
+
+.contenedor-cartas-mover{
+    overflow-y: auto;
+    height: 75%;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.ciudad-mover{
+    display: flex;
+    justify-content: space-evenly;
+    align-self: center;
+    width: 50%;
+    margin: 2rem;
+
+    select{
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+    }
+
+    button{
+        border: none;
+        border-radius: 5px;
+        padding: 0rem 1rem;
+    }
 }

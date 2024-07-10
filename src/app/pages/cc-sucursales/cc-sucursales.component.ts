@@ -28,7 +28,6 @@ export class CcSucursalesComponent {
   sucursales: Sucursal[] = [];
 
   crear: boolean = false;
-  cambiar: boolean = false;
   reemplazar: boolean = false;
 
   tempSucursal: Sucursal = new Sucursal();
@@ -49,34 +48,38 @@ export class CcSucursalesComponent {
     }
   }
 
+  public crearSuc() {
+    this.goBack();
+    this.crear = true;
+  }
+
   public subirSucursal() {
     //console.log(this.tempSucursal);
-    if(this.chequeos()){
+    if (this.chequeos()) {
       let encargado = this.conexion.lista_Usuarios.find(us => us.id_usuario == this.tempSucursal.duenio)
       let datosSuc = "Datos de la sucursal " +
         "<br> Ciudad donde esta/ra situada: " + this.tempSucursal.ciudad +
         "<br> Encargado de la sucursal: " + encargado?.nombre_usuario;
 
       this.alert.pregunta("Los datos estan bien?", datosSuc)
-      .then(res => {
-        if (res.isConfirmed) {
-          this.conexion.sucursal.
-            crearSucursal(this.tempSucursal).
-            subscribe(() => {
-              this.alert.mensajeBien("Agregada correctamente!");
-              this.conexion.refresh_BD();
-              this.llenarMisArrays();
-            });
-        } else {
-          this.alert.cancelado();
-        }
-      })
+        .then(res => {
+          if (res.isConfirmed) {
+            this.conexion.sucursal.
+              crearSucursal(this.tempSucursal).
+              subscribe(() => {
+                this.alert.mensajeBien("Agregada correctamente!");
+                this.conexion.refresh_BD();
+                this.llenarMisArrays();
+              });
+          } else {
+            this.alert.cancelado();
+          }
+        })
     }
   }
 
   public goBack() {
     this.tempSucursal = new Sucursal();
-    this.cambiar = false;
     this.crear = false;
     this.reemplazar = false;
     this.tempSucursal = new Sucursal();
@@ -85,6 +88,7 @@ export class CcSucursalesComponent {
 
   public acciones(accion: any) {
     console.log(accion);
+    this.goBack();
     let msg = "";
     let datosSuc = "Datos de la sucursal " +
       "<br> ID de la sucursal: " + accion[1].id_sucursal +
@@ -120,41 +124,44 @@ export class CcSucursalesComponent {
   }
 
   public subirNuevoDuenio() {
-    let msj = this.chequeoDuenioDoble(this.nuevoDuenio.id_usuario);
-    if(msj == ""){
-      this.alert.pregunta(
-        "Estas seguro de cambiar el encargado de la sucursal " + this.tempSucursal.ciudad,
-        "Encargado actual: " + this.tempSucursal.nombre_usuario +
-        "<br> Nuevo encargado: " + this.nuevoDuenio.nombre_usuario)
-        .then(res => {
-          if (res.isConfirmed) {
-            this.conexion.sucursal
-              .modificarSucursal(this.tempSucursal.id_sucursal, this.nuevoDuenio)
-              .subscribe(() => {
-                this.alert.mensajeBien("Encargado cambiado correctamente!");
-                this.conexion.refresh_BD();
-                this.llenarMisArrays();
-                this.cambiar = true;
-              })
-          } else {
-            this.alert.cancelado();
-          }
-        })
+    if(this.nuevoDuenio.nombre == undefined){
+      this.alert.error("Seleccione un nuevo encargado");
     }else{
-      this.alert.error(msj);
+      let msj = this.chequeoDuenioDoble(this.nuevoDuenio.id_usuario);
+      if (msj == "") {
+        this.alert.pregunta(
+          "Estas seguro de cambiar el encargado de la sucursal " + this.tempSucursal.ciudad,
+          "Encargado actual: " + this.tempSucursal.nombre_usuario +
+          "<br> Nuevo encargado: " + this.nuevoDuenio.nombre_usuario)
+          .then(res => {
+            if (res.isConfirmed) {
+              this.conexion.sucursal
+                .modificarSucursal(this.tempSucursal.id_sucursal, this.nuevoDuenio)
+                .subscribe(() => {
+                  this.alert.mensajeBien("Encargado cambiado correctamente!");
+                  this.conexion.refresh_BD();
+                  this.llenarMisArrays();
+                })
+            } else {
+              this.alert.cancelado();
+            }
+          })
+      } else {
+        this.alert.error(msj);
+      }
     }
   }
 
-  private chequeos() : boolean{
+  private chequeos(): boolean {
     let limpio = false;
     let msj = this.chequeoVacios();
     if (msj == "") {
       msj = this.chequeoDuenioDoble(this.tempSucursal.duenio);
-      if(msj == ""){
+      if (msj == "") {
         limpio = true;
       }
     }
-    if(!limpio){
+    if (!limpio) {
       this.alert.error(msj);
     }
     return limpio;
@@ -171,14 +178,14 @@ export class CcSucursalesComponent {
     return msj;
   }
 
-  private chequeoDuenioDoble(id : number) : string{
+  private chequeoDuenioDoble(id: number): string {
     let msj = "";
-    for(let i = 0; i < this.sucursales.length && msj == ""; i++){
-      if(id == this.sucursales[i].duenio){
+    for (let i = 0; i < this.sucursales.length && msj == ""; i++) {
+      if (id == this.sucursales[i].duenio) {
         msj = "Esta persona ya es encargado de otra sucursal.";
       }
     }
-  return msj;
+    return msj;
   }
 
   private llenarMisArrays() {
@@ -199,7 +206,6 @@ export class CcSucursalesComponent {
   private limpiar() {
     this.conexion.conectado = false;
     this.crear = false;
-    this.cambiar = false;
     this.reemplazar = false;
 
     this.tempSucursal = new Sucursal();

@@ -1,3 +1,18 @@
+#fondo-login{
+    height: 100vh;
+    width: 100vw;
+}
+
+.todo{
+    position: fixed;
+    height: 33vh;
+    width: 20vw;
+    top: 30%;
+    left: 40%;
+    border: 5px double black;
+    border-radius: 2px;
+}
+
 .login{
     display: flex;
     flex-direction: column;
@@ -6,19 +21,32 @@
 
     label{
         margin: 5px;
+        font-size: large;
     }
 
     input{
         margin: 5px;
+        width: 10vw;
+        height: 3vh;
+        border-radius: 5px;
     }
 
     button{
         margin: 5px;
+        padding: 0.2rem 0.5rem;
         width: 50%;
+        border-radius: 5px;
     }
 }
 
-.btn-x{
+.contenedor-btn-x{
     display: flex;
     justify-content: flex-end;
+}
+
+.btn-x{
+    margin: 0;
+    padding: 0.4rem 1rem;
+    border: none;
+    font-size: large;
 }

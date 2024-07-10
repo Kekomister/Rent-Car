@@ -1,39 +1,157 @@
-#busqueda{
+.fondo{
+    /*background-image: url("../../../assets/fondo-normal.jpg");*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.extra{
+    height: 89vh;
+}
+
+.ancho-shadow{
+    box-shadow: 23px 0px 0px 0px rgba(119, 119, 119, 0.1),-23px 0px 0px 0px rgba(119, 119, 119, 0.1);
+    background-color: rgba(255, 255, 255, 0.795);
+}
+
+#busqueda {
     display: flex;
     margin: 0 auto;
-    height: 30vh;
-    width: 70%;
+    height: 24.5vh;
     align-items: center;
+    justify-content: center;
 }
 
-.formulario{
+.formulario {
+    display: flex;
+    box-shadow: 5px 5px 10px;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    color: rgb(29, 28, 28);
+    font-size: 1.2rem;
+}
+
+.campos{
     display: flex;
 }
 
-.ciudades{
+.ciudades {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+
+    select{
+        margin: 0.5vh;
+        border: none;
+        border-radius: 0.4rem;
+        padding: 0.3rem;
+    }
+}
+
+.fechas {
     display: flex;
     flex-direction: column;
     margin: 1rem;
 }
 
-.fechas{
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
+/* para el calendario*/
+:host ::ng-deep .p-calendar{ 
+    margin: 0.5vh;
+    border: none;
+    border-radius: 0.4rem;
+    height: 2.8vh;
+} 
+
+.btn-buscar {
+    /* UP LEFT DOWN RIGHT*/
+    width: 90%;
+    margin : 0 auto;
+    margin-bottom: 0.4rem;
+    height: 3vh;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
 }
 
-.btn-buscar{
-    height: 15vh;
-}
 
-.ejemplos{
+
+.ejemplos {
     display: flex;
     overflow: auto;
-    height: 65vh;
+    height: 54vh;
 }
 
-.cuadrado{
-    align-content: center;
+.contenedor-btn-ver-todos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-ver-todos{
+    margin : 0.5rem auto;
     width: 25%;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.2rem 1rem;
+}
+
+.cuadrado {
+    align-content: center;
     height: 100%;
+    margin: 0 auto;
+}
+
+.listas{
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    min-height: 89vh;
+}
+
+.btn-volver{
+    margin : 0.5rem auto;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.2rem 1rem;
+}
+
+.lista-autos-disponibles-arriba{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btns-marca{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #386FE0 #ffffff;
+    padding: 1rem;
+    background-color: #d1cece;
+    border-radius: 3px;
+}
+
+.btn-marca{
+    font-size: large;
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.listas-match{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
+
+.lista-nop{
+    display: flex;
+    margin-top: 5rem; 
+    font-size: x-large;
+    justify-content: center;
 }

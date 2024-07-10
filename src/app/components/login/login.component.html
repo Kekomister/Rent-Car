@@ -1,18 +1,22 @@
-<div class="btn-x">
-    <button (click)="salir()"> X </button>
-</div>
+<div id="fondo-login"></div>
 
-<div class="login">
-
-    <label for="" id="mensaje-login"> Ingrese sus datos : </label>
-
-    <label for=""> Usuario </label>
-    <input id="login-usuario" type="text" [(ngModel)]="usuario">
-    <label for=""> Contraseña </label>
-    <input id="login-contrasenia" type="password" [(ngModel)]="contrasenia">
-
-    <label id="login-error" for="" hidden> Uno de los campos no esta completo </label>
-
-    <button (click)="chequeoEntrar()"> Entrar </button>
-    <button (click)="irA('Sign-Up')"> Crear cuenta </button>
+<div class="todo naranja">
+    <div class="contenedor-btn-x">
+        <button class="btn-x azul" (click)="salir()"> X </button>
+    </div>
+    
+    <div class="login">
+    
+        <label for="" id="mensaje-login"> Ingrese sus datos : </label>
+    
+        <label for=""> Usuario </label>
+        <input id="login-usuario" type="text" [(ngModel)]="usuario">
+        <label for=""> Contraseña </label>
+        <input id="login-contrasenia" type="password" [(ngModel)]="contrasenia">
+    
+        <label id="login-error" for="" hidden> Uno de los campos no esta completo </label>
+    
+        <button class="azul" (click)="chequeoEntrar()"> Entrar </button>
+        <button class="azul" (click)="irA('Sign-Up')"> Crear cuenta </button>
+    </div>
 </div>

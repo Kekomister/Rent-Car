@@ -8,6 +8,7 @@ export class LoginService {
 
   usuario: Usuario = new Usuario();
   duenio: number = -1;
+  sucursal: string = "";
   logeando: boolean = false;
 
   constructor() { }
@@ -17,6 +18,8 @@ export class LoginService {
     this.usuario = JSON.parse(temp_U);
     let temp_D = localStorage.getItem('Duenio')!.toString();
     this.duenio = Number(temp_D);
+    let temp_S = localStorage.getItem('Sucursal')!.toString();
+    this.sucursal = JSON.parse(temp_S);
   }
 
   public chequeoMasterAdmin(usuario: string, contrasenia: string) {
@@ -40,5 +43,6 @@ export class LoginService {
   public desconectar() {
     this.usuario = new Usuario();
     this.duenio = -1;
+    this.sucursal = "";
   }
 }

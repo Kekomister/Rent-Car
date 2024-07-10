@@ -1,18 +1,39 @@
-.carta{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
-    align-items: center;
+.contenedor{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
 }
 
-.imagen{
+.carta {
+    display: flex;
+    flex-direction: column;
+    border: 3px double black;
+    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.637);
+    align-items: center;
+    padding: 2vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
+
+.imagen {
     width: 100%;
     height: 30vh;
     display: flex;
-    img{
+
+    img {
         margin: auto;
-        width: 90%;
+        width: 15vw;
         height: 90%;
         object-fit: contain;
+        background-color: rgba(0, 0, 0, 0.623);
+        padding: 0.3rem;
+        border-radius: 5px;
     }
+}
+
+label{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.445);
+    border-radius: 5px;
 }

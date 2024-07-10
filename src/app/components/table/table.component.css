@@ -1,0 +1,53 @@
+th{
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    background-color: #38e040;
+    text-align: center;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+}
+
+td{
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    width: 10%;
+
+    button{
+        background-color: #386FE0;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.bx{
+    font-size: xx-large;
+    padding: 0.2rem;
+    background-color: #386FE0;
+    color: white;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+p-table{
+    .p-component{
+        .p-paginator{
+            margin-top: 2vh;
+            button{
+                font-size: larger;
+            }
+            .p-paginator-icon{
+                width: 4vw;
+                height: 4vh;
+                color: blue;
+            }
+        }
+    }
+}

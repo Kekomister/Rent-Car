@@ -26,6 +26,8 @@ export class ConexionService {
   lista_Auto_Suc: Auto_Sucursal[] = [];
   lista_Peticiones: Peticion[] = [];
 
+  lista_Marcas: String[] = [];
+
   conectado : boolean = false;
 
   constructor(
@@ -51,6 +53,7 @@ export class ConexionService {
       this.auto.traerAutos().subscribe(async res => {
         this.lista_Autos = await res;
         this.mensaje("AUTOS : ", this.lista_Autos);
+        this.sacarMarcas();
       });
 
       this.auto_suc.traerAuto_Sucursales().subscribe(async res => {
@@ -116,6 +119,24 @@ export class ConexionService {
       }
     }
     return expiro;
+  }
+
+  private sacarMarcas(){
+    this.lista_Marcas = [];
+
+    this.lista_Autos.forEach(ato => {
+      let esta = false;
+      for(let i = 0; i < this.lista_Marcas.length && !esta; i++){
+        if(this.lista_Marcas[i] == ato.marca){
+          esta = true;
+        }
+      }
+      if(!esta){
+        this.lista_Marcas.push(ato.marca);
+      }
+    });
+
+    this.mensaje("MARCAS : ", this.lista_Marcas);
   }
 
 }

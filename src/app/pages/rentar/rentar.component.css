@@ -1,16 +1,36 @@
 .muestra{
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 95%;
+    height: 90vh;
+    background-color: rgba(255, 255, 255, 0.678);
+    align-items: center;
 
     label{
-        margin: 3px;
+        margin: 0.2rem;
+        font-size: larger;
     }
+}
+
+.img{
+    width: 100%;
+    margin: 0.5rem;
 }
 
 .btn-si{
     width: 15%;
+    margin-top: 2vh;
+    padding: 2px;
+    font-size: larger;
+    border: none;
+    border-radius: 5px;
+}
+
+.separados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem;
 }
 
 .recibo{
@@ -18,20 +38,51 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    border: 3px solid #FFD300;
+    border: 5px double black;
     z-index: 9;
-    flex-direction: column;
     padding: 10px;
     box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: black;
+    color: white;
+    font-size: larger;
 }
 
 .dentro-recibo{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+
+    label{
+        padding: 3px;
+    }
+}
+
+.codigo{
+    margin-top: 1vh;
+    padding: 3px;
+    border-top: 3px dotted black;
+    font-style: italic;
+    font-size: larger;
+    text-align: center;
 }
 
 .btns-dentro-recibo{
-    margin-top: 3px;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-listo{
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+    width: 40%;
 }

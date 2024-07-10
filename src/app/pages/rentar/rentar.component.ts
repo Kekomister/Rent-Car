@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Auto } from 'src/app/classes/auto.model';
 import { Auto_Sucursal } from 'src/app/classes/auto_sucursal.model';
 import { Peticion } from 'src/app/classes/peticion.model';
 import { ConexionService } from 'src/app/services/conexion.service';
@@ -15,6 +16,7 @@ export class RentarComponent {
 
   auto_selec : Auto_Sucursal[] = [];
   temp_peticion : Peticion = new Peticion();
+  total : number = 0;
 
   recibo : boolean = false;
 
@@ -42,6 +44,7 @@ export class RentarComponent {
           this.auto_selec = await res;
           console.log("Auto elegido : ");
           console.log(this.auto_selec);
+          this.cantidadDias(this.auto_selec[0]);
         });
         this.conexion.conectado = true;
       })
@@ -76,8 +79,20 @@ export class RentarComponent {
     this.router.navigate([donde]);
   }
 
+  private cantidadDias(auto : Auto_Sucursal){
+    let date = new Date(this.temp_peticion.fecha_retiro);
+    let currentDate = new Date(this.temp_peticion.fecha_devolucion);
+
+    let dias = Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) ) /(1000 * 60 * 60 * 24));
+    this.total = Number(auto.costo) * dias;
+    if(this.total == 0){
+      this.total = Number(auto.costo);
+    }
+  }
+
   private llenadoPeticion(){
     let codigo = "";
+    // ESTE FOR CREA EL CODIGO DEL TICKET
     for(let i = 0; i < 5; i++){
       let r;
       do{
@@ -92,7 +107,7 @@ export class RentarComponent {
       codigo += String.fromCharCode(r)
     }
     this.temp_peticion.codigo_retiro = codigo;
-    this.temp_peticion.precio = this.auto_selec[0].costo;
+    this.temp_peticion.precio = this.total;
     this.temp_peticion.auto_sucursal = this.auto_selec[0].id_auto_sucursal;
     this.temp_peticion.usuario = this.login.usuario.id_usuario;
     this.temp_peticion.finalizado = false;

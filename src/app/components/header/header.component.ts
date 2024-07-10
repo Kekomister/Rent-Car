@@ -26,6 +26,7 @@ export class HeaderComponent {
     localStorage.clear();
     localStorage.setItem('User', JSON.stringify(this.login.usuario));
     localStorage.setItem('Duenio', JSON.stringify(this.login.duenio));
+    localStorage.setItem('Sucursal', JSON.stringify(this.login.sucursal));
   }
 
   ngOnInit() {

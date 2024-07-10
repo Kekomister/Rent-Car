@@ -25,6 +25,7 @@ import { ResetAutosPipe } from './pipes/reset-autos.pipe';
 import { EsperaComponent } from './components/espera/espera.component';
 import { BooleanPipe } from './pipes/boolean.pipe';
 import { NoRentadosPipe } from './pipes/no-rentados.pipe';
+import { RandomPipe } from './pipes/random.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NoRentadosPipe } from './pipes/no-rentados.pipe';
     ResetAutosPipe,
     EsperaComponent,
     BooleanPipe,
-    NoRentadosPipe
+    NoRentadosPipe,
+    RandomPipe
   ],
   imports: [
     BrowserModule,

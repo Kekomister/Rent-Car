@@ -48,7 +48,9 @@ export class PeticionesComponent {
     this.renderer.listen('window', 'click', (e: Event) => {
       if (
         window.location.pathname == "/Peticiones" &&
-        e.target == document.getElementsByClassName("cuerpo").item(0)
+        (e.target == document.getElementsByClassName("cuerpo").item(0) ||
+        e.target == document.getElementsByClassName("info-auto").item(0) ||
+        e.target == document.getElementsByClassName("contenedor").item(0))
       ) {
         this.expandirFlag = false;
       }
@@ -69,7 +71,7 @@ export class PeticionesComponent {
     switch (event[0]) {
       case "borrar":
         let infoPet = "Datos de la peticion" +
-          "<br> ID de la peticion: " + pet.id_peticion +
+          "<br><br> ID de la peticion: " + pet.id_peticion +
           "<br> Ciudad de retiro: " + pet.ciudad_ret +
           "<br> Ciudad de devolucion: " + pet.ciudad_dev +
           "<br> Fecha de retiro: " + this.formatoFecha(pet.fecha_retiro) +
@@ -108,7 +110,7 @@ export class PeticionesComponent {
 
   public cambiarPeticion() {
     if (this.temp_sucursal == -1) {
-      this.alert.error("Tiene que elegir una ciudad nueva de devolucion");
+      this.alert.error("Tiene que elegir una nueva ciudad de devolucion");
     } else {
       let scsalAc = this.peticiones.find(suc => suc.id_peticion == this.temp_pet);
       let scsalNv = this.sucursales.find(suc => suc.id_sucursal == this.temp_sucursal);
@@ -130,6 +132,14 @@ export class PeticionesComponent {
           }
         })
     }
+  }
+
+  public cancelar(){
+    this.modificarFlag = false;
+    this.expandirFlag = false;
+    this.temp_sucursal = -1;
+    this.temp_pet = -1;
+    this.auto = new Auto_Sucursal();
   }
 
   private llenarMisArrays() {

@@ -1,10 +1,33 @@
 .header {
-    border: 5px solid green;
+    height: 6vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid black;
+}
+
+.ancho{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+}
+
+.titulo{
+    font-size: x-large;
+    color: rgb(29, 28, 28);
+}
+
+.btns{
     display: flex;
 }
 
 button{
     margin: 0 5px;
+    padding: 0.3rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: large;
 }
 
 #ingresar {
@@ -12,10 +35,12 @@ button{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    border: 3px solid #FFD300;
     z-index: 9;
     flex-direction: column;
-    padding: 10px;
     box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+    border: 1px solid black;
+}
+
+.msj-bienvenida{
+    font-size: larger;
 }

@@ -37,4 +37,6 @@ export class AutoService {
       }
     );
   }
+
+  //NUNCA SE BORRA LOS AUTOS, AUNQUE NO HAYA NINGUNO EN UNA SUCURSAL
 }
