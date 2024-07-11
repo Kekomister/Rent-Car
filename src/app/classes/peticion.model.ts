@@ -12,6 +12,8 @@ export class Peticion{
 
     ciudad_ret? : string;
     ciudad_dev? : string;
+    
+    dev_ret? : string;
 
     constructor(){}
 }

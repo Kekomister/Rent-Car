@@ -2,11 +2,13 @@
 
     <div class="ancho">
 
-        <div class="inicio" *ngIf="!agregarFlag && !moverFlag">
+        <div class="inicio" *ngIf="!agregarFlag && !moverAutoFlag && !movesFlag">
 
             <button class="azul" (click)="agregar()"> Agregar un auto </button>
             <br><br>
-            <button class="azul" (click)="mover()"> Mover auto a otra sucursal </button>
+            <button class="azul" (click)="moverAutoFlag = true"> Mover auto a otra sucursal </button>
+            <br><br>
+            <button class="azul" (click)="movesFlag = true"> Ver movimiento de mi sucursal </button>
 
             <br><br>
             <label for="" class="titulo"> Autos en tu Sucursal ({{login.sucursal}}) </label>
@@ -62,7 +64,7 @@
 
         </div>
 
-        <div class="mover" *ngIf="moverFlag">
+        <div class="mover" *ngIf="moverAutoFlag">
 
             <button class="azul" (click)="limpiar()"> Volver atras </button>
             <br><br>
@@ -95,6 +97,24 @@
             <app-carta [array]="autosGlobal" (evtSelec)="tocadoAfuera($event)"></app-carta>
         </div>
 
+        <div class="movimiento-autos" *ngIf="movesFlag">
+
+            <button class="azul volver-tabla" (click)="limpiar()"> Volver atras </button>
+
+            <div class="contenedor-tabla">
+                <app-table [filas]="movimientos" [columnas]="titulos" (accion)="infoAuto($event)"></app-table>
+            </div>
+
+            <div class="cuerpo" *ngIf="expandirFlag">
+                <div class="info-auto">
+
+                    <div class="info-auto-blanco"></div>
+                    <app-carta [array]="[temp_Auto_Suc]"></app-carta>
+                    
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </div>

@@ -2,6 +2,8 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auto } from 'src/app/classes/auto.model';
 import { Auto_Sucursal } from 'src/app/classes/auto_sucursal.model';
+import { Columna } from 'src/app/classes/columna.model';
+import { Peticion } from 'src/app/classes/peticion.model';
 import { Sucursal } from 'src/app/classes/sucursal.model';
 import { ConexionService } from 'src/app/services/conexion.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -18,14 +20,27 @@ export class AdministrarComponent {
   fileUpload!: ElementRef;
   files: any = [];
 
+  titulos: Columna[] = [
+    { field: "id_peticion", header: "Peticion" },
+    { field: "auto_sucursal", header: "ID del vehiculo" },
+    { field: "", header: "Informacion del auto" },
+    { field: "fecha_retiro", header: "Fecha de retiro" },
+    { field: "fecha_devolucion", header: "Fecha de devolucion" },
+    { field: "dev_ret", header: "Termina en la sucursal..." }
+  ];
+
   autos_suc: Auto_Sucursal[] = [];
   autosGlobal: Auto[] = [];
   ciudades: Sucursal[] = [];
+  movimientos: Peticion[] = [];
 
   agregarFlag: boolean = false;
   creadoFlag: boolean = false;
   mostrarImagen: boolean = false;
-  moverFlag: boolean = false;
+  moverAutoFlag: boolean = false;
+
+  movesFlag: boolean = false;
+  expandirFlag: boolean = false;
 
   temp_Auto: Auto = new Auto();
   temp_Auto_Suc: Auto_Sucursal = new Auto_Sucursal();
@@ -42,12 +57,22 @@ export class AdministrarComponent {
     private alert: MessagesService
   ) {
     this.renderer.listen('window', 'click', (e: Event) => {
+      //console.log(e.target);
+
       if (
         window.location.pathname == "/Administrar" &&
         e.target != document.getElementById('vision-autos') &&
         e.target != document.getElementById('btn-vision')
       ) {
         this.sacar_Hidden(true);
+      }
+
+      if (window.location.pathname == "/Administrar" &&
+        e.target == document.getElementsByClassName("cuerpo").item(0) ||
+        e.target == document.getElementsByClassName("info-auto").item(0) ||
+        e.target == document.getElementsByClassName("contenedor").item(1)
+      ) {
+        this.expandirFlag = false;
       }
     });
   }
@@ -62,15 +87,17 @@ export class AdministrarComponent {
 
   public agregar() {
     this.agregarFlag = true;
-    this.creadoFlag = false;
-    this.moverFlag = false;
+    // SETEA PARA QUE SEAN TOCABLES, SINO SOLO SE PUEDEN LEER
     this.seteoNomMarcaInput(false);
   }
 
-  public mover() {
-    this.agregarFlag = false;
-    this.creadoFlag = false;
-    this.moverFlag = true;
+  public infoAuto(event: any) {
+    let a = this.conexion.lista_Auto_Suc.find(auto => auto.id_auto_sucursal == event[1].auto_sucursal);
+    if (a != undefined) {
+      this.temp_Auto_Suc = a;
+      a.cantidad = 0;
+    }
+    this.expandirFlag = true;
   }
 
   public tocadoAfuera(event: any) {
@@ -230,8 +257,9 @@ export class AdministrarComponent {
 
     this.agregarFlag = false;
     this.mostrarImagen = false;
-    this.moverFlag = false;
+    this.moverAutoFlag = false;
     this.creadoFlag = false;
+    this.movesFlag = false;
   }
 
   public sacar_Hidden(bool: boolean) {
@@ -331,7 +359,7 @@ export class AdministrarComponent {
       campo == "undefined" ||
       campo == "null"
     ) {
-      msj = "Necesita ingresar un" + extra +"<br>";
+      msj = "Necesita ingresar un" + extra + "<br>";
     }
     return msj;
   }
@@ -341,7 +369,7 @@ export class AdministrarComponent {
     this.agregarFlag = true;
     this.mostrarImagen = true;
     this.creadoFlag = false;
-    this.moverFlag = false;
+    this.moverAutoFlag = false;
 
     this.seteoNomMarcaInput(true);
   }
@@ -363,7 +391,7 @@ export class AdministrarComponent {
       this.autosGlobal = this.conexion.lista_Autos;
       this.autosEnSucursal(this.conexion.lista_Auto_Suc);
       this.ciudades = this.sucDistintas(this.conexion.lista_Sucursales);
-
+      this.movimientos = this.movesAutos(this.conexion.lista_Peticiones);
       this.conexion.conectado = true;
     }, 1000);
   }
@@ -385,6 +413,34 @@ export class AdministrarComponent {
       }
     })
     return ciud;
+  }
+
+  private movesAutos(pets: Peticion[]): Peticion[] {
+    let array: Peticion[] = [];
+
+    pets.forEach(p => {
+      if (p.finalizado == false) {
+        // SI LO SACA DE MI SUCURSAL
+        if (p.sucursal_retiro == this.login.duenio) {
+          // BUSCA EN CUAL TERMINA
+          this.ciudades.forEach(c => {
+            // DEVOLUCION == DONDE QUEDA
+            if(p.sucursal_devolucion == c.id_sucursal){
+              p.dev_ret = c.ciudad;
+              array.push(p);
+            }
+          });
+        } else {
+          // SI LO DEJA EN MI SUCURSAL
+          if (p.sucursal_devolucion == this.login.duenio) {
+            p.dev_ret = this.login.sucursal;
+            array.push(p);
+          }
+        }
+      }
+    });
+
+    return array;
   }
 
   private seteoNomMarcaInput(bool: boolean) {

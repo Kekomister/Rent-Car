@@ -1,4 +1,4 @@
-.fondo-config{
+.fondo-config {
     background-image: url("../../../assets/configuro-fondo.png");
     background-size: contain;
 }
@@ -7,7 +7,7 @@
 
 .inicio,
 .agregar,
-.mover{
+.mover {
     margin: 0 auto;
     padding: 1rem;
     height: 89vh;
@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
 
-    button{
+    button {
         padding: 0.5rem;
         border: none;
         border-radius: 5px;
@@ -23,36 +23,36 @@
     }
 }
 
-.titulo{
+.titulo {
     font-size: xx-large;
     align-self: center;
 }
 
-.texto{
+.texto {
     align-self: center;
 }
 
-.contenedor-cartas{
+.contenedor-cartas {
     height: 70vh;
-    overflow:scroll;
+    overflow: scroll;
     overflow-x: hidden;
 }
 
 /*-----------------AGREGAR------------------------------------------------*/
 
-.agregar{
+.agregar {
 
-    .ver-agregar{
+    .ver-agregar {
         align-self: center;
     }
 
-    .crear{
+    .crear {
         align-self: center;
         margin: 2rem;
     }
 }
 
-.info-agregar{
+.info-agregar {
     display: flex;
     margin-top: 2rem;
     width: 100%;
@@ -60,47 +60,47 @@
     box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
 }
 
-.datos{
+.datos {
     margin-left: 5rem;
     display: flex;
     flex-direction: column;
     align-self: center;
     width: 40%;
 
-    label{
+    label {
         padding: 0.2rem;
         align-self: center;
         font-size: large;
     }
 
-    input{
+    input {
         padding: 0.1rem 1rem;
         margin-bottom: 1rem;
         border-radius: 3px;
         align-self: center;
     }
 
-    button{
+    button {
         width: 10vw;
         align-self: center;
     }
 }
 
-.contenedor-imagen{
+.contenedor-imagen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50%;
 
-    label{
+    label {
         font-size: x-large;
         text-decoration: underline;
         padding-bottom: 1rem;
     }
 }
 
-.imagen{
+.imagen {
     background-color: rgba(0, 0, 0, 0.63);
     max-height: 700px;
     min-height: 30px;
@@ -108,7 +108,7 @@
     min-width: 30px;
 }
 
-#vision-autos{
+#vision-autos {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -123,7 +123,7 @@
     height: 70vh;
     overflow: scroll;
 
-    button{
+    button {
         border: none;
         border-radius: 5px;
         padding: 1rem;
@@ -132,28 +132,81 @@
 
 /*-----------------MOVER------------------------------------------------*/
 
-.contenedor-cartas-mover{
+.contenedor-cartas-mover {
     overflow-y: auto;
     height: 75%;
     box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
 }
 
-.ciudad-mover{
+.ciudad-mover {
     display: flex;
     justify-content: space-evenly;
     align-self: center;
     width: 50%;
     margin: 2rem;
 
-    select{
+    select {
         margin-top: 0.5rem;
         padding: 0.5rem 1rem;
         border-radius: 5px;
     }
 
-    button{
+    button {
         border: none;
         border-radius: 5px;
         padding: 0rem 1rem;
     }
+}
+
+/*--------------MOVIMIENTOS--------------*/
+
+.movimiento-autos {
+    margin: 0 auto;
+    padding: 1rem;
+    height: 89vh;
+    background-color: rgba(255, 255, 255, 0.877);
+    display: flex;
+    flex-direction: column;
+}
+
+.volver-tabla {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.contenedor-tabla {
+    padding: 1rem;
+}
+
+.cuerpo {
+    position: fixed;
+    z-index: 8;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+}
+
+.info-auto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
+    background-color: rgba(45, 46, 46, 0.233);
+    width: 100vw;
+}
+
+.info-auto-blanco {
+    position: absolute;
+    left: 42%;
+    width: 16vw;
+    height: 50vh;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
 }
