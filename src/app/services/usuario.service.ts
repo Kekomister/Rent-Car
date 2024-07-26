@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuarioService {
 
-  urlUsuario: string = "http://localhost:3000/usuario";
+  urlUsuario: string = "/usuario";
+  //urlUsuario: string = "http://localhost:3000/usuario";
 
   constructor(private http : HttpClient) { }
 

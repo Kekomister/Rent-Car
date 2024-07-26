@@ -1,0 +1,8 @@
+{
+    "/sucursal/auto/*": {
+        "target": "https://rent-car-back.onrender.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
