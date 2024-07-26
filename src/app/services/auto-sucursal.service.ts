@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auto_Sucursal } from '../classes/auto_sucursal.model';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutoSucursalService {
 
-  urlAuto_Sucursal: string = "http://localhost:3000/sucursal/auto_sucursal";
+  urlAuto_Sucursal: string = this.backend.url +"/sucursal/auto_sucursal";
+  //urlAuto_Sucursal: string = "http://localhost:3000/sucursal/auto_sucursal";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private backend : BackendService) { }
 
   public traerAuto_Sucursales(){
     return this.http.get<Auto_Sucursal[]>(this.urlAuto_Sucursal);

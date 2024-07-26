@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../classes/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/enviroments/enviroment';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  private urlUsuario = `${environment.apiUrl}/usuario`;
+  urlUsuario: string = this.backend.url +`/usuario`;
   //urlUsuario: string = "http://localhost:3000/usuario";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private backend : BackendService) { }
 
   public traerUsuarios(){
     return this.http.get<Usuario[]>(this.urlUsuario);

@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auto } from '../classes/auto.model';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutoService {
 
-  urlAuto: string = "http://localhost:3000/sucursal/auto";
+  urlAuto: string = this.backend.url + "/sucursal/auto";
+  //urlAuto: string = "http://localhost:3000/sucursal/auto";
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private backend: BackendService) { }
 
   public traerAutos(){
     return this.http.get<Auto[]>(this.urlAuto);
