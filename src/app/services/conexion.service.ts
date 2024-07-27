@@ -29,7 +29,7 @@ export class ConexionService {
   lista_Marcas: String[] = [];
 
   conectado : boolean = false;
-  timeout : number = 10000;
+  timeout : number = 3000;
 
   constructor(
     public usuario: UsuarioService,
