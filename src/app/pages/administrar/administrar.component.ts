@@ -393,7 +393,7 @@ export class AdministrarComponent {
       this.ciudades = this.sucDistintas(this.conexion.lista_Sucursales);
       this.movimientos = this.movesAutos(this.conexion.lista_Peticiones);
       this.conexion.conectado = true;
-    }, 1000);
+    }, this.conexion.timeout);
   }
 
   private autosEnSucursal(array: Auto_Sucursal[]) {
@@ -449,7 +449,7 @@ export class AdministrarComponent {
       inp.readOnly = bool;
       inp = document.getElementById("admin-marca") as HTMLInputElement;
       inp.readOnly = bool;
-    }, 500)
+    }, this.conexion.timeout)
   }
 
   private crearMsjsModificar(): string[] {

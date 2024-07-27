@@ -199,7 +199,7 @@ export class CcSucursalesComponent {
         //console.log("Usuarios : ");
         //console.log(this.usuarios);
         this.conexion.conectado = true;
-      }, 1000);
+      }, this.conexion.timeout);
     });
   }
 

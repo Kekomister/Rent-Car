@@ -52,14 +52,15 @@ export class InicioComponent {
   }
 
   ngOnInit() {
-    this.conexion.conectado = false;
     this.conexion.refresh_BD();
+    this.conexion.conectado = false;
     setTimeout(() => {
       this.ciudades = this.conexion.lista_Sucursales;
       this.autosMuestra = this.conexion.lista_Autos;
       this.marcas = this.conexion.lista_Marcas;
       this.conexion.conectado = true;
-    }, 1000);
+    }, this.conexion.timeout);
+
     this.seteoDia();
   }
 
@@ -116,11 +117,11 @@ export class InicioComponent {
     this.limpiar();
   }
 
-  public filtroMarca(marca : String){
+  public filtroMarca(marca: String) {
     this.filtrarFlag = true;
     this.autosFiltrados = [];
     this.autos.forEach(ato => {
-      if(ato.marca == marca){
+      if (ato.marca == marca) {
         this.autosFiltrados.push(ato);
       }
     });
@@ -201,13 +202,13 @@ export class InicioComponent {
     }
   }
 
-  private buscarMarcas(){
-    let array : String[] = [];
-    
+  private buscarMarcas() {
+    let array: String[] = [];
+
     this.marcas.forEach(mca => {
       let esta = false;
-      for(let i = 0; i < this.autos.length && !esta; i++){
-        if(this.autos[i].marca == mca){
+      for (let i = 0; i < this.autos.length && !esta; i++) {
+        if (this.autos[i].marca == mca) {
           array.push(mca);
           esta = true;
         }

@@ -153,7 +153,7 @@ export class PeticionesComponent {
         //console.log("Peticiones : ");
         //console.log(this.peticiones);
         this.conexion.conectado = true;
-      }, 1000);
+      }, this.conexion.timeout);
     });
   }
 
