@@ -1,13 +1,16 @@
-.fondo{
+/*2 fondo--*/
+
+.fondo {
     background-color: white;
     height: 90vh;
 }
 
-.contenedor-tabla{
+.contenedor-tabla {
     padding: 1rem;
 }
 
-.mod-fondo{
+/*4 mod-fondo----*/
+.mod-fondo {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +19,8 @@
     background-color: transparent;
 }
 
-.modificando{
+/*6 modificando------*/
+.modificando {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -33,34 +37,38 @@
     text-align: center;
     height: 20vh;
 
-    label{
+    label {
         margin: 1rem;
-        font-size: larger;
     }
 
-    select{
+    select {
         margin: 1rem;
     }
 }
 
-.mod-titulo{
+.mod-titulo {
     font-size: x-large;
 }
 
-.mod-select{
+.mod-texto{
+    font-size: larger;
+}
+
+.mod-select {
     width: 10vw;
     height: 3vh;
     border-radius: 3px;
 }
 
-.mod-cont-btn{
+/*8 mod-cont--------*/
+.mod-cont-btn {
     display: flex;
     justify-content: space-around;
     align-self: center;
     width: 80%;
 }
 
-.mod-btn{
+.mod-btn {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 3px;
@@ -68,9 +76,16 @@
     margin-top: 1rem;
 }
 
+/*cierra mod-cont--------*/
+
+/*cierra modificando------*/
+
+/*cierra mod-fondo----*/
+
 /*----------------INFO AUTO---------------*/
 
-.cuerpo{
+/*4 cuerpo----*/
+.cuerpo {
     position: fixed;
     z-index: 8;
     top: 0;
@@ -79,7 +94,8 @@
     opacity: 1;
 }
 
-.info-auto{
+/*6 info-auto----*/
+.info-auto {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -92,11 +108,72 @@
     width: 100vw;
 }
 
-.info-auto-blanco{
-    position: absolute;
+.info-auto-blanco {
+    position: fixed;
     left: 42%;
     width: 16vw;
-    height: 56vh;
+    height: 53vh;
     background-color: rgb(255, 255, 255);
     z-index: -1;
+}
+
+/*cierra info-auto----*/
+
+/*cierra cuerpo----*/
+
+/*cierra fondo--*/
+
+@media (max-width: 768px) {
+
+    .ancho {
+        width: 95%;
+    }
+
+    .contenedor-tabla {
+        height: 100%;
+        overflow: auto;
+        padding: 0;
+        padding-top: 2vh;
+    }
+
+    .modificando {
+        width: 90%;
+        height: 30vh;
+        padding: 0;
+        gap: 2vh;
+    
+        select {
+            padding: 1vh 1vw;
+        }
+    }
+    
+    .mod-titulo {
+        font-size: larger;
+    }
+
+    .mod-texto{
+        font-size: medium;
+    }
+    
+    .mod-select {
+        width: 60vw;
+        height: 5vh;
+    }
+    
+    .mod-btn {
+        margin: 0 1vw;
+        width: 50%;
+        padding: 1.5vh 0;
+    }
+
+    .info-auto-blanco {
+        left: 4%;
+        width: 93vw;
+        height: 60vh;
+        min-height: 433px;
+        padding: 1vh;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+    }
+
 }

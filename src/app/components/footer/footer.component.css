@@ -1,19 +1,31 @@
-.footer{
+.footer {
     height: 6vh;
     width: 100%;
     position: fixed;
     bottom: 0;
     border-top: 1px solid black;
+    z-index: 2;
 }
 
-.ancho{
+.ancho {
     display: flex;
     align-items: center;
     justify-self: center;
     justify-content: space-between;
 }
 
-label{
+label {
     font-size: x-large;
     color: rgb(29, 28, 28);
+}
+
+@media (max-width: 768px) {
+
+    .ancho{
+        width: 95%;
+    }
+
+    label {
+        font-size: small;
+    }
 }

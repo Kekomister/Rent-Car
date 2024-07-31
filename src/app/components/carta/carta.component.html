@@ -5,22 +5,22 @@
         <div class="imagen">
             <img src='data:image/png;base64, {{elem.imagen}}' alt="{{i}}">
         </div>
-        
+
 
         <label for="" *ngIf="elem.cantidad == undefined && elem.id_auto_sucursal != undefined">
             ID : {{elem.id_auto_sucursal}}
         </label>
-    
-        <label for=""> Nombre : {{elem.nombre}} </label>
 
-        <label for=""> Marca : {{elem.marca}} </label>
-        
+        <label class="mobile-no" for=""> Nombre : {{elem.nombre}} </label>
+
+        <label class="mobile-no" for=""> Marca : {{elem.marca}} </label>
+
         <label for=""> Costo por dia : {{elem.costo}} </label>
 
         <div *ngIf="elem.cantidad > 0">
             <label for=""> Cantidad en tu sucursal : {{elem.cantidad}} </label>
         </div>
 
-</div>
+    </div>
 
 </div>

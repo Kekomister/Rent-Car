@@ -1,4 +1,4 @@
-th{
+th {
     border: 1px solid black;
     padding: 0.5rem 1rem;
     background-color: #38e040;
@@ -7,15 +7,16 @@ th{
     color: rgb(0, 0, 0);
 }
 
-td{
+td {
     border: 1px solid black;
     padding: 0.5rem 1rem;
     text-align: center;
     border-radius: 2px;
     color: rgb(0, 0, 0);
     width: 10%;
+    height: 8vh;
 
-    button{
+    button {
         background-color: #386FE0;
         color: white;
         padding: 0.5rem 1rem;
@@ -25,7 +26,7 @@ td{
     }
 }
 
-.bx{
+.bx {
     font-size: xx-large;
     padding: 0.2rem;
     background-color: #386FE0;
@@ -36,17 +37,41 @@ td{
     cursor: pointer;
 }
 
-p-table{
-    .p-component{
-        .p-paginator{
+p-table {
+    .p-component {
+        .p-paginator {
             margin-top: 2vh;
-            button{
+
+            button {
                 font-size: larger;
             }
-            .p-paginator-icon{
+
+            .p-paginator-icon {
                 width: 4vw;
                 height: 4vh;
                 color: blue;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    th {
+        min-width: 30vw;
+    }
+
+    th,
+    td {
+        padding: 1vh 0;
+    }
+
+    p-table {
+        .p-component {
+            .p-paginator {
+                margin: 0;
+                button {
+                    font-size: small;
+                }
             }
         }
     }

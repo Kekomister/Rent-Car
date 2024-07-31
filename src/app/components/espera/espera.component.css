@@ -7,3 +7,9 @@
     text-decoration: underline;
     text-underline-position: under;
 }
+
+@media (max-width: 768px){
+    .espera{
+        font-size: large;
+    }
+}

@@ -11,6 +11,8 @@ import { MessagesService } from 'src/app/services/messages.service';
 })
 export class HeaderComponent {
 
+  mobile : boolean = false;
+
   constructor(
     public login: LoginService,
     private conexion: ConexionService,
@@ -35,6 +37,9 @@ export class HeaderComponent {
   }
 
   public irA(donde: string) {
+    if(this.mobile){
+      this.cerrar();
+    }
 
     if (!this.login.logeando) {
       this.router.navigate([donde]);
@@ -72,6 +77,30 @@ export class HeaderComponent {
         this.alert.cancelado();
       }
     })
+  }
+
+  public expandir(){
+    this.mobile = true;
+    let doc = document.getElementsByClassName("header").item(0) as HTMLElement;
+    doc.style.height = "100%";
+    doc = document.getElementsByClassName("btns").item(0) as HTMLElement;
+    doc.style.display = "grid";
+    let expan = document.getElementsByClassName("expandir").item(0) as HTMLElement;
+    expan.style.display = "none";
+    let x = document.getElementsByClassName("cerrar").item(0) as HTMLElement;
+    x.style.display = "block";
+  }
+
+  public cerrar(){
+    this.mobile = false;
+    let header = document.getElementsByClassName("header").item(0) as HTMLElement;
+    header.style.height = "7vh";
+    let btns = document.getElementsByClassName("btns").item(0) as HTMLElement;
+    btns.style.display = "none";
+    let expan = document.getElementsByClassName("expandir").item(0) as HTMLElement;
+    expan.style.display = "block";
+    let x = document.getElementsByClassName("cerrar").item(0) as HTMLElement;
+    x.style.display = "none";
   }
   
 }

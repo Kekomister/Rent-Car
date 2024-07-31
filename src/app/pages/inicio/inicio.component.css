@@ -1,18 +1,11 @@
-.fondo{
-    /*background-image: url("../../../assets/fondo-normal.jpg");*/
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+/*-------------------INICIO---------------------*/
 
-.extra{
+/*2 ancho extra--*/
+.extra {
     height: 89vh;
 }
 
-.ancho-shadow{
-    box-shadow: 23px 0px 0px 0px rgba(119, 119, 119, 0.1),-23px 0px 0px 0px rgba(119, 119, 119, 0.1);
-    background-color: rgba(255, 255, 255, 0.795);
-}
-
+/*4 busqueda----*/
 #busqueda {
     display: flex;
     margin: 0 auto;
@@ -21,6 +14,7 @@
     justify-content: center;
 }
 
+/*6 formulario------*/
 .formulario {
     display: flex;
     box-shadow: 5px 5px 10px;
@@ -30,16 +24,18 @@
     font-size: 1.2rem;
 }
 
-.campos{
+/*8 campos--------*/
+.campos {
     display: flex;
 }
 
+/*10 ciudades----------*/
 .ciudades {
     display: flex;
     flex-direction: column;
     margin: 1rem;
 
-    select{
+    select {
         margin: 0.5vh;
         border: none;
         border-radius: 0.4rem;
@@ -47,6 +43,9 @@
     }
 }
 
+/*cierra ciudades----------*/
+
+/*10 fechas----------*/
 .fechas {
     display: flex;
     flex-direction: column;
@@ -54,17 +53,21 @@
 }
 
 /* para el calendario*/
-:host ::ng-deep .p-calendar{ 
+:host ::ng-deep .p-calendar {
     margin: 0.5vh;
     border: none;
     border-radius: 0.4rem;
     height: 2.8vh;
-} 
+}
+
+/*cierra fechas----------*/
+
+/*cierra campos--------*/
 
 .btn-buscar {
     /* UP LEFT DOWN RIGHT*/
     width: 90%;
-    margin : 0 auto;
+    margin: 0 auto;
     margin-bottom: 0.4rem;
     height: 3vh;
     border-radius: 0.5rem;
@@ -72,27 +75,15 @@
     font-size: 1.2rem;
 }
 
+/*cierra formulario------*/
 
+/*cierra busqueda----*/
 
+/*4 ejemplos----*/
 .ejemplos {
     display: flex;
     overflow: auto;
     height: 54vh;
-}
-
-.contenedor-btn-ver-todos{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.btn-ver-todos{
-    margin : 0.5rem auto;
-    width: 25%;
-    font-size: 1.2rem;
-    border-radius: 0.5rem;
-    border: none;
-    padding: 0.2rem 1rem;
 }
 
 .cuadrado {
@@ -101,7 +92,36 @@
     margin: 0 auto;
 }
 
-.listas{
+/*cierra ejemplos----*/
+
+/*4 ver-todos----*/
+.contenedor-btn-ver-todos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-ver-todos {
+    margin: 0.5rem auto;
+    width: 25%;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.2rem 1rem;
+}
+
+/*cierra ver-todos----*/
+
+/*------------------DISPONIBLES------------------*/
+
+/*2 ancho-shadow--*/
+.ancho-shadow {
+    box-shadow: 23px 0px 0px 0px rgba(119, 119, 119, 0.1), -23px 0px 0px 0px rgba(119, 119, 119, 0.1);
+    background-color: rgba(255, 255, 255, 0.795);
+}
+
+/*4 listas----*/
+.listas {
     padding-top: 1rem;
     padding-bottom: 4rem;
     margin-left: 1vw;
@@ -109,22 +129,32 @@
     min-height: 89vh;
 }
 
-.btn-volver{
-    margin : 0.5rem auto;
+.btn-volver {
+    margin: 0.5rem auto;
     font-size: 1.2rem;
     border-radius: 0.5rem;
     border: none;
     padding: 0.2rem 1rem;
 }
 
-.lista-autos-disponibles-arriba{
+/*6 lista-disponibles------*/
+
+.lista-autos-disponibles-arriba {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
 }
 
-.btns-marca{
+.listas-match {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    font-size: large;
+}
+
+/*8 btns-marca--------*/
+.btns-marca {
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -134,24 +164,126 @@
     padding: 1rem;
     background-color: #d1cece;
     border-radius: 3px;
+    gap: 0.5vw;
 }
 
-.btn-marca{
+.btn-marca {
     font-size: large;
     border-radius: 0.3rem;
     border: none;
     padding: 0.5rem 1rem;
+    min-width: 5vw;
 }
 
-.listas-match{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
-}
+/*cierra btns-marca--------*/
 
-.lista-nop{
+/*cierra lista-disponibles------*/
+
+/*cierra listas----*/
+
+.lista-nop {
     display: flex;
-    margin-top: 5rem; 
+    margin-top: 5rem;
     font-size: x-large;
     justify-content: center;
+}
+
+/*cierra ancho-shadow--*/
+
+@media (max-width: 768px) {
+
+    /*-----------INICIO-----------*/
+    .extra {
+        margin-top: 9vh;
+        height: 83vh;
+    }
+
+    .formulario {
+        font-size: 1rem;
+        padding: 0vh 3vw;
+    }
+
+    .campos {
+        flex-direction: column;
+    }
+
+    .ciudades,
+    .fechas {
+        margin: 0.5rem;
+    }
+
+    .btn-buscar {
+        width: 50%;
+        font-size: 0.7rem;
+    }
+
+    .ejemplos {
+        margin-top: 8vh;
+        height: 40vh;
+
+        .mobile-no{
+            display: none;
+        }
+    }
+
+    .cuadrado {
+        align-content: center;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .btn-ver-todos {
+        margin-top: 1.5vh;
+        margin-bottom: 0.5vh;
+        width: 100%;
+        font-size: 1rem;
+        padding: 1vh 0.2vw;
+    }
+
+    /*------------------DISPONIBLES------------------*/
+
+    .ancho-shadow {
+        padding-top: 1vh;
+        width: 95%;
+    }
+
+    .listas {
+        padding: 1vh 0;
+        height: 40vh;
+        overflow: auto;
+    }
+
+    .btn-volver {
+        font-size: 1rem;
+    }
+
+    .lista-autos-disponibles-arriba {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .listas-match {
+        font-size: large;
+    }
+
+    .btns-marca {
+        width: 100%;
+        padding: 1vh 0;
+        gap: 2vw;
+    }
+
+    .btn-marca {
+        font-size: medium;
+        padding: 1vh 1vw;
+        min-width: 20vw;
+        margin-bottom: 1vh;
+    }
+
+    .lista-nop {
+        font-size: large;
+    }
+
 }

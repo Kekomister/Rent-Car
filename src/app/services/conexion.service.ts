@@ -71,8 +71,8 @@ export class ConexionService {
   }
 
   private mensaje(msj : string, array : any){
-    console.log(msj);
-    console.log(array);
+    //console.log(msj);
+    //console.log(array);
   }
 
   private finalizado(array : Peticion[]){

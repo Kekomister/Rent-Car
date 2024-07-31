@@ -5,8 +5,8 @@
 }
 
 .router{
-    padding-top: 3.5rem;
-    padding-bottom: 2rem;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
 }
 
 .espera{
@@ -16,4 +16,10 @@
     top: 0%;
     z-index: 9;
     background-color: white;
+}
+
+@media (max-width: 768px) {
+    .fondo{
+        background-image: url("../assets/imagen-fondo-chica.webp");
+    }
 }

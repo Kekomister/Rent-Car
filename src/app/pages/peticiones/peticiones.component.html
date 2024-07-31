@@ -17,7 +17,7 @@
             </div>
     
             <div>
-                <label for=""> Sucursal / Ciudad donde queres devolver el vehiculo </label>
+                <label class="mod-texto" for=""> Ciudad donde queres devolver el vehiculo </label>
         
                 <select class="mod-select" [(ngModel)]="temp_sucursal">
                     <option value="{{suc.id_sucursal}}" *ngFor="let suc of sucursales"> {{suc.ciudad}} </option>

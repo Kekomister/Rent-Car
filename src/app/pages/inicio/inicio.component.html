@@ -24,11 +24,11 @@
 
                 <div class="fechas">
                     <label for=""> Fecha de retiro </label>
-                    <p-calendar [(ngModel)]="temp_peticion.fecha_retiro" [minDate]="minDate" [maxDate]="maxDate"
+                    <p-calendar appendTo="body" [(ngModel)]="temp_peticion.fecha_retiro" [minDate]="minDate" [maxDate]="maxDate"
                         [readonlyInput]="true"></p-calendar>
 
                     <label for=""> Fecha de devolucion </label>
-                    <p-calendar [(ngModel)]="temp_peticion.fecha_devolucion" [minDate]="minDate" [maxDate]="maxDate"
+                    <p-calendar appendTo="body" [(ngModel)]="temp_peticion.fecha_devolucion" [minDate]="minDate" [maxDate]="maxDate"
                         [readonlyInput]="true"></p-calendar>
                 </div>
 

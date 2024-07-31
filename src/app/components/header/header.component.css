@@ -1,11 +1,14 @@
+/*2--header--*/
 .header {
     height: 6vh;
     width: 100%;
     position: fixed;
     top: 0;
     border-bottom: 1px solid black;
+    z-index: 1;
 }
 
+/*4----ancho----*/
 .ancho{
     display: flex;
     align-items: center;
@@ -13,13 +16,26 @@
     justify-content: space-between;
 }
 
+.expandir,
+.cerrar{
+    display: none;
+    z-index: 2;
+}
+
+.bx-menu,
+.bx-x{
+    font-size: xx-large;
+}
+
 .titulo{
     font-size: x-large;
     color: rgb(29, 28, 28);
 }
 
+/*6------botones------*/
 .btns{
     display: flex;
+    align-items: center;
 }
 
 button{
@@ -30,6 +46,7 @@ button{
     font-size: large;
 }
 
+/*8--------log in--------*/
 #ingresar {
     position: fixed;
     top: 50%;
@@ -41,6 +58,93 @@ button{
     border: 1px solid black;
 }
 
+/*8--------log in--------*/
+
+/*8--------cliente--------*/
+.cliente{
+    display: flex;
+}
+
 .msj-bienvenida{
     font-size: larger;
+}
+
+.mobile{
+    display: none;
+}
+
+/*8--------cliente--------*/
+
+/*6------botones------*/
+
+/*4----ancho----*/
+
+/*2--header--*/
+
+@media (max-width: 768px) {
+    .header {
+        height: 7vh;
+    }
+
+    .ancho{
+        width: 100%;
+        margin-top: 1.5vh;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-content: center;
+        align-content: baseline;
+    }
+
+    .titulo{
+        font-size: x-large;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btns{
+        display: grid;
+        margin: 0;
+        display: none;
+    }
+
+    .cliente{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button{
+        margin: 0;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-radius: 0;
+        width: 100%;
+        padding: 2vh 0;
+    }
+
+    .ancho,.btns, .cliente{
+        gap: 5vh;
+    }
+
+    .mobile{
+        display: block;
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        border-bottom: 1px solid black;
+        z-index: 2;
+    }
+
+    .expandir,
+    .cerrar{
+        display: block;
+        position: fixed;
+        top: 1.5%;
+        left: 2%;
+    }
+
+    .cerrar{
+        display: none;
+    }
 }

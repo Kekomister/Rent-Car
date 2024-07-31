@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div *ngIf="login.usuario.id_usuario != undefined">
+            <div class="cliente" *ngIf="login.usuario.id_usuario != undefined">
                 <button class="azul" (click)="irA('Peticiones')">
                     Peticiones hechas
                 </button>
@@ -44,4 +44,14 @@
 
     </div>
 
+</div>
+
+<div class="mobile"></div>
+
+<div class="expandir" (click)="expandir()">
+    <i class='bx bx-menu'></i>
+</div>
+
+<div class="cerrar" (click)="cerrar()">
+    <i class='bx bx-x'></i>
 </div>
