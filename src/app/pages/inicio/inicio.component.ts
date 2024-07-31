@@ -317,6 +317,7 @@ export class InicioComponent {
   private limpiar() {
     this.temp_peticion = new Peticion();
     this.autos = [];
+    this.autosFiltrados = [];
     this.verFlag = false;
     this.filtrarFlag = false;
   }

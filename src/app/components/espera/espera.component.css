@@ -13,3 +13,9 @@
         font-size: large;
     }
 }
+
+@media (min-height: 1000px) and (max-width: 768px) {
+    .espera{
+        font-size: xx-large;
+    }
+}

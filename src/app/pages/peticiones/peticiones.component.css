@@ -48,6 +48,13 @@
 
 .mod-titulo {
     font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    
+    label{
+        margin:0;
+    }
 }
 
 .mod-texto{
@@ -148,27 +155,35 @@
     }
     
     .mod-titulo {
-        font-size: larger;
+        font-size: 3vh;
     }
 
     .mod-texto{
-        font-size: medium;
+        font-size: 2vh;
     }
     
     .mod-select {
         width: 60vw;
         height: 5vh;
+        font-size: 2vh;
     }
     
     .mod-btn {
         margin: 0 1vw;
         width: 50%;
         padding: 1.5vh 0;
+        font-size: 1.3vh;
+    }
+
+    .info-auto{
+        label{
+            font-size: 3vh;
+        }
     }
 
     .info-auto-blanco {
-        left: 4%;
-        width: 93vw;
+        left: 2%;
+        width: 96vw;
         height: 60vh;
         min-height: 433px;
         padding: 1vh;

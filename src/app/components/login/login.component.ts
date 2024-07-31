@@ -40,17 +40,17 @@ export class LoginComponent {
     let doc = this.traerDocId("login-usuario");
     if (this.usuario == "") {
       uFlag = true;
-      this.seteoBorder(doc, "red");
+      this.seteoBorder(doc, 5, "red", "inset");
     } else {
-      this.seteoBorder(doc, "black");
+      this.seteoBorder(doc, 1, "black", "solid");
     }
 
     doc = this.traerDocId("login-contrasenia");
     if (this.contrasenia == "") {
       cFlag = true;
-      this.seteoBorder(doc, "red");
+      this.seteoBorder(doc, 5, "red", "inset");
     } else {
-      this.seteoBorder(doc, "black");
+      this.seteoBorder(doc, 1, "black", "solid");
     }
 
     doc = this.traerDocId("login-error");
@@ -125,16 +125,17 @@ export class LoginComponent {
     return document.getElementById(id) as HTMLElement;
   }
 
-  private seteoBorder(doc: HTMLElement, color: string) {
-    doc.style.border = "1px solid " + color;
+  private seteoBorder(doc: HTMLElement, px: number, color: string, estilo: string) {
+    doc.style.border = px + "px solid " + color;
+    doc.style.borderStyle = estilo;
   }
 
   private limpiar() {
     let doc = this.traerDocId("login-usuario");
-    this.seteoBorder(doc, "black");
+    this.seteoBorder(doc, 1, "black", "solid");
 
     doc = this.traerDocId("login-contrasenia");
-    this.seteoBorder(doc, "black");
+    this.seteoBorder(doc, 1, "black", "solid");
 
     doc = this.traerDocId("login-error");
     doc.hidden = true;

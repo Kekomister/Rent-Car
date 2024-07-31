@@ -40,7 +40,7 @@
 
     </div>
 
-    <div class="ejemplos">
+    <div class="ejemplos barra">
 
         <div class="cuadrado" *ngIf="autosMuestra.length > 0">
             <app-carta [array]="autosMuestra | random"></app-carta>
@@ -56,7 +56,7 @@
 
 <div class="ancho ancho-shadow" *ngIf="autos.length != 0">
 
-    <div class="listas" id="lista-autos-disponibles">
+    <div class="listas barra" id="lista-autos-disponibles">
 
         <button class="btn-volver azul" (click)="volver()"> Volver </button>
 
@@ -67,19 +67,19 @@
                 que buscas
             </label>
 
-            <div class="btns-marca">
+            <div class="btns-marca barra">
                 <button (click)="filtrarFlag = false" *ngIf="filtrarFlag" class="azul btn-marca"> Sin filtro </button>
                 <button (click)="filtroMarca(m)" class="azul btn-marca" *ngFor="let m of marcas"> {{m}} </button>
             </div>
 
         </div>
 
-        <app-carta *ngIf="!filtrarFlag" [array]="autos | noRentados" (evtSelec)="tocado($event)"></app-carta>
-        <app-carta *ngIf="filtrarFlag" [array]="autosFiltrados | noRentados" (evtSelec)="tocado($event)"></app-carta>
-
         <div *ngIf="(autosFiltrados | noRentados).length == 0 && filtrarFlag">
             <label for="" class="lista-nop"> No hay ningun vehiculo libre de esta marca </label>
         </div>
+
+        <app-carta *ngIf="!filtrarFlag" [array]="autos | noRentados" (evtSelec)="tocado($event)"></app-carta>
+        <app-carta *ngIf="filtrarFlag" [array]="autosFiltrados | noRentados" (evtSelec)="tocado($event)"></app-carta>
 
     </div>
 
@@ -87,7 +87,7 @@
 
 <div class="ancho ancho-shadow" *ngIf="verFlag">
 
-    <div class="listas">
+    <div class="listas barra">
         <button class="btn-volver azul" (click)="volver()"> Volver </button>
 
         <label for="" class="listas-match"> (Esto refleja la variedad de vehiculos, no la cantidad) </label>

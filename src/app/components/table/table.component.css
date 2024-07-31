@@ -5,6 +5,7 @@ th {
     text-align: center;
     border-radius: 2px;
     color: rgb(0, 0, 0);
+    font-size: 2vh;
 }
 
 td {
@@ -15,11 +16,13 @@ td {
     color: rgb(0, 0, 0);
     width: 10%;
     height: 8vh;
+    font-size: 2vh;
 
     button {
         background-color: #386FE0;
         color: white;
-        padding: 0.5rem 1rem;
+        font-size: 2vh;
+        padding: 1vh 1vw;
         border-radius: 3px;
         border: none;
         cursor: pointer;
@@ -65,12 +68,18 @@ p-table {
         padding: 1vh 0;
     }
 
+    .bx{
+        font-size: 3.5vh;
+        padding: 1vh 1vw;
+    }
+
     p-table {
         .p-component {
             .p-paginator {
                 margin: 0;
                 button {
-                    font-size: small;
+                    font-size: 2vh;
+                    padding: 1vh 1vw;
                 }
             }
         }

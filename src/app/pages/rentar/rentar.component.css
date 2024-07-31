@@ -34,7 +34,7 @@
     width: 15%;
     margin-top: 2vh;
     padding: 2px;
-    font-size: larger;
+    font-size: 2vh;
     border: none;
     border-radius: 5px;
 }
@@ -59,7 +59,7 @@
     text-decoration: underline;
     text-decoration-color: black;
     color: white;
-    font-size: larger;
+    font-size: 2.5vh;
 }
 
 /*6 dentro-recibo------*/
@@ -80,7 +80,7 @@
     padding: 3px;
     border-top: 3px dotted black;
     font-style: italic;
-    font-size: larger;
+    font-size: 2.5vh;
     text-align: center;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .btn-listo{
-    font-size: large;
+    font-size: 3vh;
     border: none;
     border-radius: 5px;
     padding: 3px;
@@ -112,11 +112,22 @@
 @media (max-width: 768px){
     .muestra{
         align-items: center;
+        justify-content: center;
     
+        .contenedor{
+            height: 100%;
+            min-height: 45vh;
+        }
         label{
             margin: 0.2vh;
-            font-size: medium;
+            font-size: 2.3vh;
         }
+    }
+
+    .separados{
+        align-items: baseline;
+        margin: 1vh;
+        width: 100%;
     }
 
     .btn-si{
@@ -125,13 +136,5 @@
 
     .recibo{
         width: 80%;
-    }
-}
-
-@media (min-height: 730px){
-    .muestra{
-        label{
-            margin: 0.5vh;
-        }
     }
 }

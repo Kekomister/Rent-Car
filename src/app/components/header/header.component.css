@@ -9,7 +9,7 @@
 }
 
 /*4----ancho----*/
-.ancho{
+.ancho {
     display: flex;
     align-items: center;
     justify-self: center;
@@ -17,33 +17,28 @@
 }
 
 .expandir,
-.cerrar{
+.cerrar {
     display: none;
     z-index: 2;
 }
 
-.bx-menu,
-.bx-x{
-    font-size: xx-large;
-}
-
-.titulo{
-    font-size: x-large;
+.titulo {
+    font-size: 3vh;
     color: rgb(29, 28, 28);
 }
 
 /*6------botones------*/
-.btns{
+.btns {
     display: flex;
     align-items: center;
 }
 
-button{
+button {
     margin: 0 5px;
-    padding: 0.3rem 2rem;
+    padding: 0.5vh 1.5vw;
     border: none;
     border-radius: 0.5rem;
-    font-size: large;
+    font-size: 2vh;
 }
 
 /*8--------log in--------*/
@@ -61,15 +56,16 @@ button{
 /*8--------log in--------*/
 
 /*8--------cliente--------*/
-.cliente{
+.cliente {
     display: flex;
+    align-items: center;
 }
 
-.msj-bienvenida{
+.msj-bienvenida {
     font-size: larger;
 }
 
-.mobile{
+.mobile {
     display: none;
 }
 
@@ -81,12 +77,14 @@ button{
 
 /*2--header--*/
 
+
+/* MOBILE */
 @media (max-width: 768px) {
     .header {
         height: 7vh;
     }
 
-    .ancho{
+    .ancho {
         width: 100%;
         margin-top: 1.5vh;
         display: grid;
@@ -95,38 +93,46 @@ button{
         align-content: baseline;
     }
 
-    .titulo{
-        font-size: x-large;
+    .bx-menu,
+    .bx-x {
+        font-size: 4vh;
+    }
+
+    .titulo {
+        font-size: 3vh;
         width: 100%;
         display: flex;
         justify-content: center;
     }
 
-    .btns{
+    .btns {
         display: grid;
         margin: 0;
         display: none;
     }
 
-    .cliente{
+    .cliente {
         flex-direction: column;
         align-items: center;
     }
 
-    button{
+    button {
         margin: 0;
         border-top: 1px solid black;
         border-bottom: 1px solid black;
         border-radius: 0;
         width: 100%;
+        font-size: 2.5vh;
         padding: 2vh 0;
     }
 
-    .ancho,.btns, .cliente{
+    .ancho,
+    .btns,
+    .cliente {
         gap: 5vh;
     }
 
-    .mobile{
+    .mobile {
         display: block;
         height: 7vh;
         width: 100%;
@@ -137,14 +143,46 @@ button{
     }
 
     .expandir,
-    .cerrar{
+    .cerrar {
         display: block;
         position: fixed;
         top: 1.5%;
         left: 2%;
     }
 
-    .cerrar{
+    .cerrar {
         display: none;
+    }
+
+    .msj-bienvenida {
+        font-size: 3vh;
+    }
+}
+
+@media (min-height: 1000px) and (max-width: 768px) {
+    .ancho {
+        margin-top: 2vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .ancho{
+        width: 85%;
+    }
+    
+    .titulo {
+        font-size: 2.5vh;
+    }
+
+    .cliente{
+        display: flex;
+        justify-content: center;
+    }
+
+    button {
+        margin: 0 5px;
+        padding: 1vh 1.5vw;
+        border: none;
+        border-radius: 0.5rem;
     }
 }

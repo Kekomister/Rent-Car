@@ -15,8 +15,12 @@
 }
 
 label {
-    font-size: x-large;
+    font-size: 3vh;
     color: rgb(29, 28, 28);
+}
+
+.anio{
+    text-align: end;
 }
 
 @media (max-width: 768px) {
@@ -26,6 +30,18 @@ label {
     }
 
     label {
-        font-size: small;
+        font-size: 1.5vh;
+    }
+}
+
+@media (min-height: 1000px) and (max-width: 768px) {
+    label {
+        font-size: 2vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .ancho{
+        width: 85%;
     }
 }
