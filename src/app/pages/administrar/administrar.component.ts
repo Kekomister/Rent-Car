@@ -449,7 +449,7 @@ export class AdministrarComponent {
       inp.readOnly = bool;
       inp = document.getElementById("admin-marca") as HTMLInputElement;
       inp.readOnly = bool;
-    }, this.conexion.timeout)
+    }, (this.conexion.timeout / 4))
   }
 
   private crearMsjsModificar(): string[] {

@@ -102,6 +102,11 @@ export class InicioComponent {
         ]
       );
     } else {
+      if(window.innerWidth < 1000){
+        let menu = document.getElementById("expandir") as HTMLElement;
+        menu.click();
+      }
+
       let element = document.getElementById('btn-ingresar') as HTMLElement;
       element.click();
       element = document.getElementById('mensaje-login') as HTMLElement;
@@ -125,6 +130,10 @@ export class InicioComponent {
         this.autosFiltrados.push(ato);
       }
     });
+  }
+
+  public desfiltrar(){
+    this.filtrarFlag = false;
   }
 
   private chequeoVacio(campo: any, extra: string) {
@@ -317,7 +326,7 @@ export class InicioComponent {
   private limpiar() {
     this.temp_peticion = new Peticion();
     this.autos = [];
-    this.autosFiltrados = [];
+    this.marcas = this.conexion.lista_Marcas;
     this.verFlag = false;
     this.filtrarFlag = false;
   }

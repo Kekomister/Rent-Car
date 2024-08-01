@@ -9,33 +9,43 @@
 .agregar,
 .mover {
     margin: 0 auto;
-    padding: 1rem;
-    height: 89vh;
+    padding: 3vh 1vw;
+    height: 90vh;
     background-color: rgba(255, 255, 255, 0.877);
     display: flex;
     flex-direction: column;
 
     button {
-        padding: 0.5rem;
+        padding: 1vh 2vw;
         border: none;
         border-radius: 5px;
         width: 20%;
+        font-size: 1.6vh;
     }
 }
 
 .titulo {
-    font-size: xx-large;
+    font-size: 3vh;
     align-self: center;
 }
 
 .texto {
     align-self: center;
+    font-size: 1.8vh;
 }
 
 .contenedor-cartas {
     height: 70vh;
     overflow: scroll;
     overflow-x: hidden;
+
+    .imagen {
+        height: 50%;
+    }
+
+    label {
+        font-size: 1.6vh;
+    }
 }
 
 /*-----------------AGREGAR------------------------------------------------*/
@@ -48,20 +58,20 @@
 
     .crear {
         align-self: center;
-        margin: 2rem;
+        margin: 3vh 1vw;
     }
 }
 
 .info-agregar {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 2vh;
     width: 100%;
     height: 90%;
     box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
 }
 
 .datos {
-    margin-left: 5rem;
+    margin-left: 4vw;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -70,13 +80,14 @@
     label {
         padding: 0.2rem;
         align-self: center;
-        font-size: large;
+        font-size: 2vh;
     }
 
     input {
-        padding: 0.1rem 1rem;
-        margin-bottom: 1rem;
+        padding: 0.5vh 1vw;
+        margin-bottom: 1vh;
         border-radius: 3px;
+        font-size: 1.7vh;
         align-self: center;
     }
 
@@ -94,18 +105,18 @@
     width: 50%;
 
     label {
-        font-size: x-large;
+        font-size: 3vh;
         text-decoration: underline;
-        padding-bottom: 1rem;
+        padding-bottom: 1vh;
     }
 }
 
 .imagen {
     background-color: rgba(0, 0, 0, 0.63);
     max-height: 700px;
-    min-height: 30px;
+    min-height: 100px;
     max-width: 700px;
-    min-width: 30px;
+    min-width: 100px;
 }
 
 #vision-autos {
@@ -126,7 +137,11 @@
     button {
         border: none;
         border-radius: 5px;
-        padding: 1rem;
+        padding: 1vh 1vw;
+    }
+
+    label {
+        font-size: 1.6vh;
     }
 }
 
@@ -143,18 +158,19 @@
     justify-content: space-evenly;
     align-self: center;
     width: 50%;
-    margin: 2rem;
+    margin: 3vh 2vw;
 
     select {
-        margin-top: 0.5rem;
-        padding: 0.5rem 1rem;
+        margin-top: 1vh;
+        padding: 1vh 2vw;
         border-radius: 5px;
     }
 
     button {
         border: none;
         border-radius: 5px;
-        padding: 0rem 1rem;
+        padding: 0 1vw;
+        width: 30%;
     }
 }
 
@@ -162,22 +178,24 @@
 
 .movimiento-autos {
     margin: 0 auto;
-    padding: 1rem;
-    height: 89vh;
+    padding: 3vh 1vw;
+    height: 90vh;
     background-color: rgba(255, 255, 255, 0.877);
     display: flex;
     flex-direction: column;
 }
 
 .volver-tabla {
-    padding: 0.5rem;
+    padding: 1vh 2vw;
     border: none;
     border-radius: 5px;
     width: 20%;
+    font-size: 1.6vh;
 }
 
 .contenedor-tabla {
-    padding: 1rem;
+    padding: 2vh 1vw;
+    overflow: auto;
 }
 
 .cuerpo {
@@ -200,13 +218,33 @@
     box-shadow: 0 0 0 99999px rgba(45, 46, 46, 0.233);
     background-color: rgba(45, 46, 46, 0.233);
     width: 100vw;
+
+    .contenedor-tabla {
+        grid-template-columns: 100%;
+    }
+
+    .carta {
+        width: 16.5vw;
+        height: 53.5vh;
+    }
 }
 
 .info-auto-blanco {
     position: absolute;
     left: 42%;
+    top: 4%;
     width: 16vw;
-    height: 50vh;
+    height: 53vh;
     background-color: rgb(255, 255, 255);
     z-index: -1;
+    padding: 1vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
+
+@media (max-height: 800px) {
+    .movimiento-autos {
+        padding: 0 1vw;
+        padding-top: 2vh;
+    }
 }

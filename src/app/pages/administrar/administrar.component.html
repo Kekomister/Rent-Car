@@ -16,7 +16,7 @@
             <label for="" class="texto"> Seleccione un auto para agregar una copia </label>
             <br><br>
 
-            <div class="contenedor-cartas">
+            <div class="contenedor-cartas barra">
                 <app-carta [array]="autos_suc | autosReducido" (evtSelec)="tocadoAdentro($event)"></app-carta>
             </div>
 
@@ -101,7 +101,7 @@
 
             <button class="azul volver-tabla" (click)="limpiar()"> Volver atras </button>
 
-            <div class="contenedor-tabla">
+            <div class="contenedor-tabla barra">
                 <app-table [filas]="movimientos" [columnas]="titulos" (accion)="infoAuto($event)"></app-table>
             </div>
 

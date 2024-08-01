@@ -94,4 +94,11 @@
     #login-error{
         font-size: 2vh;
     }
+
+}
+
+@media (max-height: 800px){
+    .todo {
+        padding-bottom: 2vh;
+    }
 }

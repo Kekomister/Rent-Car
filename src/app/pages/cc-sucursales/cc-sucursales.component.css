@@ -4,13 +4,13 @@
 }
 
 .ancho{
-    height: 89vh;
+    height: 90vh;
     background-color: white;
-    padding: 1rem;
+    padding: 3vh 1vw;
 }
 
 .azul{
-    padding: 0.5rem;
+    padding: 1vh 1vw;
     border: none;
     border-radius: 5px;
 }
@@ -22,34 +22,37 @@
 
     button{
         width: 20%;
-        margin: 0 1rem;
+        font-size: 1.2rem;
+        margin: 0 1vw;
     }
 }
 
 .btn-volver{
-    margin: 0 1rem;
+    margin: 0 1vw;
     font-size: 1.2rem;
     border-radius: 0.5rem;
     border: none;
-    padding: 0.2rem 1rem;
 }
 
 /*-------------------------AGREGAR--------------------*/
 
 .agregar{
-    margin: 0 auto;
+    margin: 1vh auto;
     width: 90%;
-    padding: 2rem;
+    padding: 2vh 2vw;
     display: flex;
     flex-direction: column;
-    font-size: large;
+    font-size: 2vh;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.164);
+    border-radius: 5px;
 }
 
 .agregar-ciudad{
     display: grid;
     grid-template-columns: 30% 30% 30%;
     input{
-        padding: 5px;
+        padding: 1vh 1vw;
+        font-size: 1.6vh;
         border-radius: 3px;
     }
 }
@@ -59,7 +62,8 @@
     display: grid;
     grid-template-columns: 30% 30% 40%;
     select{
-        height: 3vh;
+        font-size: 1.6vh;
+        padding: 1vh 1vw;
         border-radius: 3px;
     }
 }
@@ -79,7 +83,7 @@
 /*-------------------------CAMBIAR--------------------*/
 
 .cambiar{
-    width: 80%;
+    width: 90%;
     margin: 3vh auto;
 }
 
@@ -100,11 +104,12 @@
     justify-content: center;
     border: 5px double black;
     text-align: center;
-    height: 20vh;
+    height: 30vh;
+    width: 40vw;
 
     label{
-        margin-top: 1vh;
-        font-size: larger;
+        margin: 1vh;
+        font-size: 2vh;
     }
 
 }
@@ -121,7 +126,7 @@
         -webkit-appearance: none;
         /* other styles for aesthetics */
         width: 100%;
-        font-size: 1.15rem;
+        font-size: 2vh;
         padding: 5px;
         background-color: #fff;
         border: 1px solid #caced1;
@@ -155,9 +160,14 @@
 }
 
 .reemplazar-cont-btns{
-    width: 30%;
+    width: 60%;
     align-self: center;
     margin-top: 2vh;
     display: flex;
     justify-content: space-around;
+
+    button{
+        font-size: 2vh;
+        padding: 1vh 2vw;
+    }
 }

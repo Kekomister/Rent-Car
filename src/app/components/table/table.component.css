@@ -58,7 +58,7 @@ p-table {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 999px) {
     th {
         min-width: 30vw;
     }
@@ -83,5 +83,11 @@ p-table {
                 }
             }
         }
+    }
+}
+
+@media (min-width: 999px) and (max-width: 1400px){
+    th{
+        min-width: 15vw;
     }
 }

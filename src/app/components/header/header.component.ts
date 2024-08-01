@@ -85,9 +85,9 @@ export class HeaderComponent {
     doc.style.height = "100%";
     doc = document.getElementsByClassName("btns").item(0) as HTMLElement;
     doc.style.display = "grid";
-    let expan = document.getElementsByClassName("expandir").item(0) as HTMLElement;
+    let expan = document.getElementById("expandir") as HTMLElement;
     expan.style.display = "none";
-    let x = document.getElementsByClassName("cerrar").item(0) as HTMLElement;
+    let x = document.getElementById("cerrar") as HTMLElement;
     x.style.display = "block";
   }
 
@@ -97,9 +97,9 @@ export class HeaderComponent {
     header.style.height = "7vh";
     let btns = document.getElementsByClassName("btns").item(0) as HTMLElement;
     btns.style.display = "none";
-    let expan = document.getElementsByClassName("expandir").item(0) as HTMLElement;
+    let expan = document.getElementById("expandir") as HTMLElement;
     expan.style.display = "block";
-    let x = document.getElementsByClassName("cerrar").item(0) as HTMLElement;
+    let x = document.getElementById("cerrar") as HTMLElement;
     x.style.display = "none";
   }
   

@@ -11,19 +11,19 @@
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    padding: 1rem;
+    padding: 1vh 1vw;
     width: 100%;
     height: 65%;
     align-items: center;
 
     label {
-        margin: 3px;
+        margin: 0.5vh;
     }
 }
 
 .titulo{
-    font-size: xx-large;
-    margin-bottom: 3vh;
+    font-size: 3vh;
+    margin-bottom: 2vh;
 }
 
 .datos{
@@ -33,21 +33,21 @@
     width: 100%;
 
     input{
-        margin: 0.3rem;
+        margin: 0.5vh 0.5vw;
         height: 2vh;
         width: 70%;
         border: 1px solid black;
     }
     label{
         width: 70%;
-        font-size: large;
+        font-size: 2vh;
     }
 }
 
 .btn-creacion{
     width: 40%;
     height: 7%;
-    margin-top: 1rem;
+    margin-top: 1vh;
     border: none;
     border-radius: 5px;
 }

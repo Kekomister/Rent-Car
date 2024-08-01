@@ -68,7 +68,7 @@
             </label>
 
             <div class="btns-marca barra">
-                <button (click)="filtrarFlag = false" *ngIf="filtrarFlag" class="azul btn-marca"> Sin filtro </button>
+                <button (click)="desfiltrar()" *ngIf="filtrarFlag" class="azul btn-marca"> Sin filtro </button>
                 <button (click)="filtroMarca(m)" class="azul btn-marca" *ngFor="let m of marcas"> {{m}} </button>
             </div>
 

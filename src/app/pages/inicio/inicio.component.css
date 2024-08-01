@@ -8,7 +8,7 @@
 /*4 busqueda----*/
 #busqueda {
     display: flex;
-    margin: 0 auto;
+    margin: 1vh auto;
     height: 24.5vh;
     align-items: center;
     justify-content: center;
@@ -34,6 +34,7 @@
     display: flex;
     flex-direction: column;
     margin: 1rem;
+    font-size: 2vh;
 
     select {
         margin: 0.5vh;
@@ -41,7 +42,7 @@
         border-radius: 0.4rem;
         padding: 0.3rem;
         width: 10vw;
-        font-size: 2vh;
+        font-size: 1.5vh;
         height: 3vh;
     }
 }
@@ -53,6 +54,7 @@
     display: flex;
     flex-direction: column;
     margin: 1rem;
+    font-size: 2vh;
 }
 
 /* para el calendario*/
@@ -99,6 +101,10 @@
     align-content: center;
     height: 100%;
     margin: 0 auto;
+
+    label{
+        font-size: 2vh;
+    }
 }
 
 /*cierra ejemplos----*/
@@ -112,11 +118,11 @@
 
 .btn-ver-todos {
     margin: 0.5rem auto;
-    width: 25%;
+    width: 40%;
     font-size: 2.5vh;
     border-radius: 0.5rem;
     border: none;
-    padding: 0.2rem 1rem;
+    padding: 1vh 1vw;
 }
 
 /*cierra ver-todos----*/
@@ -132,10 +138,17 @@
 /*4 listas----*/
 .listas {
     padding: 1vh 0;
+    padding-bottom: 4vh;
     margin-left: 1vw;
     margin-right: 1vw;
     min-height: 89vh;
     overflow: auto;
+
+    .contenedor{
+        label{
+            font-size: 2vh;
+        }
+    }
 }
 
 .btn-volver {
@@ -257,6 +270,10 @@
         height: 100%;
         margin: 0 auto;
 
+        .contenedor{
+            grid-template-columns: 100%;
+        }
+
         .imagen {
             height: 90%;
         }
@@ -286,6 +303,9 @@
         height: 40vh;
         overflow: auto;
 
+        .contenedor{
+            grid-template-columns: 100%;
+        }
         .carta {
             .imagen {
                 height: 90%;
@@ -323,20 +343,20 @@
         margin-bottom: 1vh;
     }
 
-}
-
-@media (min-height: 1000px) and (max-width: 768px) {
-    .ejemplos {
-        .mobile-no {
-            display: block;
+    @media (min-height: 1000px){
+        .ejemplos {
+            .mobile-no {
+                display: block;
+            }
         }
     }
+
 }
 
 /* PC */
-@media (max-width: 1279px) and (min-width: 768px) {
+@media (min-width: 769px) and (max-width: 1400px) {
     .extra {
-        margin-top: 1vh;
+        height: 87vh;
     }
 
     #busqueda {
@@ -345,18 +365,19 @@
 
     .formulario {
         height: 25vh;
+        max-width: 50vw;
         justify-content: center;
     }
 
     .ciudades {
         select {
             height: 3.5vh;
-            width: 20vw;
+            width: 15vw;
         }
     }
 
     :host ::ng-deep .p-calendar {
-        width: 20vw;
+        width: 15vw;
         height: 3.5vh;
     }
 
@@ -391,6 +412,7 @@
     }
 
     .listas {
+        padding-top: 3vh;
         height: 50vh;
         .carta {
             .imagen {
@@ -410,11 +432,53 @@
     .btns-marca {
         width: 90%;
         padding: 1vh 1vw;
+        margin-bottom: 1vh;
     }
 
     .btn-marca {
         padding: 1vh 0.5vw;
         min-width: 15vw;
+    }
+
+    @media(max-width: 1114px){
+        .ciudades {
+            select {
+                width: 20vw;
+            }
+        }
+    
+        .ejemplos{
+            .contenedor{
+                width: 50vh;
+                grid-template-columns: 100%;
+            }
+            .carta {
+                width: 100%;
+                .imagen{
+                    img{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+
+        .listas{
+            .contenedor{
+                grid-template-columns: 100%;
+            }
+            .carta {
+                width: 100%;
+                .imagen{
+                    img{
+                        width: 80%;
+                    }
+                }
+            }
+        }
+
+        :host ::ng-deep .p-calendar {
+            width: 20vw;
+        }
     }
 
 }
